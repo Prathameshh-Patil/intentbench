@@ -1,0 +1,163 @@
+{
+  "approach": "tfidf_logreg",
+  "split": "validation",
+  "selected_by": "macro_f1",
+  "best": {
+    "features": "char 2-5-gram",
+    "C": 100.0,
+    "accuracy": 0.9076227390180879,
+    "in_scope_accuracy": 0.914886515353805,
+    "macro_f1": 0.9134702823805588,
+    "oos_precision": 0.71875,
+    "oos_recall": 0.69,
+    "oos_f1": 0.7040816326530612,
+    "n": 3096
+  },
+  "grid": [
+    {
+      "features": "word 1-gram",
+      "C": 1.0,
+      "accuracy": 0.8669250645994832,
+      "in_scope_accuracy": 0.8765020026702269,
+      "macro_f1": 0.8809422281459297,
+      "oos_precision": 0.4172661870503597,
+      "oos_recall": 0.58,
+      "oos_f1": 0.48535564853556484,
+      "n": 3096
+    },
+    {
+      "features": "word 1-gram",
+      "C": 10.0,
+      "accuracy": 0.8917958656330749,
+      "in_scope_accuracy": 0.9025367156208278,
+      "macro_f1": 0.9014093148467394,
+      "oos_precision": 0.59375,
+      "oos_recall": 0.57,
+      "oos_f1": 0.5816326530612245,
+      "n": 3096
+    },
+    {
+      "features": "word 1-gram",
+      "C": 100.0,
+      "accuracy": 0.8921188630490956,
+      "in_scope_accuracy": 0.9048731642189586,
+      "macro_f1": 0.9021047245415931,
+      "oos_precision": 0.6,
+      "oos_recall": 0.51,
+      "oos_f1": 0.5513513513513514,
+      "n": 3096
+    },
+    {
+      "features": "word 1-gram",
+      "C": 1000.0,
+      "accuracy": 0.8869509043927648,
+      "in_scope_accuracy": 0.8985313751668892,
+      "macro_f1": 0.896734958041095,
+      "oos_precision": 0.6,
+      "oos_recall": 0.54,
+      "oos_f1": 0.5684210526315789,
+      "n": 3096
+    },
+    {
+      "features": "word 1-2-gram",
+      "C": 1.0,
+      "accuracy": 0.8662790697674418,
+      "in_scope_accuracy": 0.8758344459279038,
+      "macro_f1": 0.8791128684536685,
+      "oos_precision": 0.42962962962962964,
+      "oos_recall": 0.58,
+      "oos_f1": 0.49361702127659574,
+      "n": 3096
+    },
+    {
+      "features": "word 1-2-gram",
+      "C": 10.0,
+      "accuracy": 0.8898578811369509,
+      "in_scope_accuracy": 0.9005340453938585,
+      "macro_f1": 0.8999883400240893,
+      "oos_precision": 0.57,
+      "oos_recall": 0.57,
+      "oos_f1": 0.57,
+      "n": 3096
+    },
+    {
+      "features": "word 1-2-gram",
+      "C": 100.0,
+      "accuracy": 0.8875968992248062,
+      "in_scope_accuracy": 0.8995327102803738,
+      "macro_f1": 0.896870754379529,
+      "oos_precision": 0.6022727272727273,
+      "oos_recall": 0.53,
+      "oos_f1": 0.5638297872340425,
+      "n": 3096
+    },
+    {
+      "features": "word 1-2-gram",
+      "C": 1000.0,
+      "accuracy": 0.875968992248062,
+      "in_scope_accuracy": 0.8901869158878505,
+      "macro_f1": 0.8854832341708654,
+      "oos_precision": 0.6164383561643836,
+      "oos_recall": 0.45,
+      "oos_f1": 0.5202312138728323,
+      "n": 3096
+    },
+    {
+      "features": "char 2-5-gram",
+      "C": 1.0,
+      "accuracy": 0.8785529715762274,
+      "in_scope_accuracy": 0.8828437917222964,
+      "macro_f1": 0.8879594020054136,
+      "oos_precision": 0.5067567567567568,
+      "oos_recall": 0.75,
+      "oos_f1": 0.6048387096774194,
+      "n": 3096
+    },
+    {
+      "features": "char 2-5-gram",
+      "C": 10.0,
+      "accuracy": 0.9043927648578811,
+      "in_scope_accuracy": 0.9112149532710281,
+      "macro_f1": 0.9106292164937455,
+      "oos_precision": 0.6730769230769231,
+      "oos_recall": 0.7,
+      "oos_f1": 0.6862745098039216,
+      "n": 3096
+    },
+    {
+      "features": "char 2-5-gram",
+      "C": 100.0,
+      "accuracy": 0.9076227390180879,
+      "in_scope_accuracy": 0.914886515353805,
+      "macro_f1": 0.9134702823805588,
+      "oos_precision": 0.71875,
+      "oos_recall": 0.69,
+      "oos_f1": 0.7040816326530612,
+      "n": 3096
+    },
+    {
+      "features": "char 2-5-gram",
+      "C": 1000.0,
+      "accuracy": 0.8982558139534884,
+      "in_scope_accuracy": 0.9092122830440588,
+      "macro_f1": 0.9054811993587418,
+      "oos_precision": 0.7037037037037037,
+      "oos_recall": 0.57,
+      "oos_f1": 0.6298342541436464,
+      "n": 3096
+    }
+  ],
+  "total_seconds": 85.3,
+  "environment": {
+    "timestamp": "2026-10-07T19:24:00+00:00",
+    "python": "3.12.14",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "cpu": "Apple M5",
+    "libraries": {
+      "datasets": "5.1.0",
+      "pandas": "3.0.6",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1"
+    }
+  }
+}
