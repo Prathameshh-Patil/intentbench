@@ -42,3 +42,37 @@ What was built in each phase, why it is designed that way, and what the alternat
 - Re-splitting with `train_test_split(seed=42)` would also be reproducible, but the numbers would no longer be comparable with published work.
 - `uv` or Poetry would manage the environment faster. Plain `venv` + `pip` has nothing extra to learn and is what the brief's stack implies.
 - Exact-match dedupe would have missed 40+ near-duplicates; embedding-based dedupe would catch paraphrases too, but it is harder to explain and would remove legitimate variety.
+
+## Phase 2: Classical baseline
+
+**What we built.**
+- `src/intentbench/evaluate.py`: the metric function every approach uses, and `environment_info()` (Python, CPU, library versions) stamped into every report.
+- `src/intentbench/baseline.py`: a scikit-learn `Pipeline` of `TfidfVectorizer` then `LogisticRegression`, plus a small grid search on validation.
+- `scripts/run_baseline.py`: tunes, saves `models/baseline.joblib` (41 MB, git-ignored) and writes `reports/baseline_validation.json`. It runs in about 85 seconds on an M-series Mac.
+
+**Validation results (best: char 2-5-grams, C=100).** Macro-F1 0.914, in-scope accuracy 0.915, out-of-scope recall 0.69, out-of-scope precision 0.72.
+
+**TF-IDF, in plain words.** Each query becomes a long vector with one slot per vocabulary item (a word, a word pair, or a short run of characters).
+- *TF (term frequency):* how often the item appears in this query.
+- *IDF (inverse document frequency):* how rare the item is across all training queries.
+
+Multiplying them makes common filler ("what", "is", "my") count for little, while rare, telling items ("transfer", "w2", "calories") count for a lot. With `analyzer="char_wb"`, the items are 2-5 character pieces like `"inte"` or `"rest"`. So the typo "intetest" still shares most of its pieces with "interest", which is why char n-grams won here.
+
+**Logistic regression with 151 classes.** The model learns one weight per (feature, class) pair. For a query, it adds up the weights of the features present to get a score for each class. *Softmax* then turns the 151 scores into probabilities that sum to 1. Training adjusts the weights to make the correct class's probability high. `C` controls regularization, a penalty that keeps weights small:
+- *Small C* means strong penalty and a simpler model that may underfit (C=1 was worst for every feature type).
+- *Large C* lets the model fit training data closely and risk overfitting (C=1000 dropped again).
+
+The best value sits in between, and the grid showed that.
+
+**Macro-F1 versus accuracy.**
+- *Accuracy* is the share of predictions that are right, so big classes dominate it.
+- *Macro-F1* computes F1 (the balance of precision and recall) for each intent separately, then averages them with equal weight. One badly handled intent pulls it down even if it's rare.
+
+Our 150 intents are balanced, so the two are close here. The difference shows up with imbalanced data, and with out-of-scope: wrongly predicting `transfer` for an out-of-scope query is a false positive that lowers `transfer`'s precision, and so macro-F1.
+
+**Why a strong baseline matters.** Without it, "DistilBERT gets 95%" sounds impressive but means nothing. The real question is how much better than a 90-second, 41 MB, CPU-only model it is, and whether that gain pays for the extra cost. A weak baseline (for example, untuned with default settings) makes every fancier model look good. A tuned one keeps the comparison honest.
+
+**Alternatives.**
+- A linear SVM would score about the same, but it gives no calibrated probabilities, and we need confidence scores for the API and the out-of-scope threshold.
+- Naive Bayes is faster but usually weaker on this kind of task.
+- Proper k-fold cross-validation would give more stable tuning, but CLINC already provides a validation split, and folds would cost 5x the time for a baseline.
