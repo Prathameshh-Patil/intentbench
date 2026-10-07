@@ -23,7 +23,8 @@ jobs:
           key: hf-${{ hashFiles('src/intentbench/data.py') }}
 
       - name: Install
-        run: pip install -e ".[dev]"
+        # CPU-only PyTorch: CI never trains, and the default Linux build bundles GBs of GPU libraries.
+        run: pip install -e ".[dev]" --extra-index-url https://download.pytorch.org/whl/cpu
 
       - name: Lint
         run: |

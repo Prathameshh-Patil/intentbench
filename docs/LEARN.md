@@ -76,3 +76,33 @@ Our 150 intents are balanced, so the two are close here. The difference shows up
 - A linear SVM would score about the same, but it gives no calibrated probabilities, and we need confidence scores for the API and the out-of-scope threshold.
 - Naive Bayes is faster but usually weaker on this kind of task.
 - Proper k-fold cross-validation would give more stable tuning, but CLINC already provides a validation split, and folds would cost 5x the time for a baseline.
+
+## Phase 3: Fine-tune DistilBERT
+
+**What we built.**
+- `src/intentbench/finetune.py`: training with the Hugging Face `Trainer` (evaluate every epoch, keep the best by validation macro-F1), a `loss_history` helper, and `DistilBertClassifier` to load the saved model and predict probabilities.
+- `scripts/run_finetune.py`: trains, reloads the saved model to double-check it, writes `reports/finetune_validation.json` and `reports/figures/finetune_curves.png`.
+- `notebooks/02_finetune_on_gpu.ipynb`: runs the same script on a free Colab GPU for anyone without one.
+
+Trained on an Apple M5 GPU (MPS) in 746 s. Validation: macro-F1 **0.960** (baseline 0.914), in-scope accuracy 0.964, out-of-scope precision 0.92 / recall 0.71. The model is 257 MB (baseline 41 MB).
+
+**Tokenization.** The model can't read text, only numbers from a fixed vocabulary of about 30,000 pieces. `"what is my intetest rate"` becomes:
+
+    ['[CLS]', 'what', 'is', 'my', 'int', '##ete', '##st', 'rate', '[SEP]']
+    [101, 2054, 2003, 2026, 20014, 12870, 3367, 3446, 102]
+
+The typo is split into known subword pieces (`##` = "continues the previous piece"), so no word is ever completely unknown. `[CLS]` and `[SEP]` mark the start and end; the classifier reads its decision from the `[CLS]` position.
+
+**What fine-tuning changes.** DistilBERT was pre-trained on lots of English text to guess hidden words. That gives it a general sense of language: "freeze my card" and "lock my card" end up near each other. We throw away the word-guessing head and attach a new, randomly initialized 151-way classifier head (the MISSING / UNEXPECTED table when loading shows exactly this). Fine-tuning then trains the new head *and* nudges all 66M pre-trained weights a little toward our task. TF-IDF can only match surface text; DistilBERT starts from meaning.
+
+**Learning rate, batch size, epochs.**
+- *Learning rate (5e-5):* how big a step each update takes. Too high wrecks the pre-trained knowledge; too low barely moves. Warmup (the first 10% of steps) ramps up from 0, then it decays linearly to 0.
+- *Batch size (32):* how many examples are averaged per update. Larger is smoother and faster per epoch but uses more memory.
+- *Epochs (8):* full passes over the training data. We evaluate after each and keep the best.
+
+**Reading overfitting from our curves.** Training loss falls to 0.005, meaning the model nearly memorizes train. Validation loss is lowest at epoch 4 (0.238) and then creeps up to 0.254. That gap is overfitting. Here it shows up as *over-confidence*: on the validation examples it gets wrong, it is more and more sure it's right. Validation macro-F1 still edges up (0.954 → 0.960), because loss measures how sure the model is, while F1 only checks which class wins. So the predictions are fine, but the confidence scores are inflated. That matters when we pick a confidence threshold for out-of-scope in Phase 7.
+
+**Alternatives.**
+- A larger model (BERT-base, RoBERTa) would likely gain a little accuracy at twice the size and latency.
+- Freezing the pre-trained layers and training only the head is faster but usually clearly worse.
+- Early stopping at epoch 4 (lowest validation loss) would give better-calibrated probabilities but a slightly lower F1. We kept selection by F1 to match the headline metric.
