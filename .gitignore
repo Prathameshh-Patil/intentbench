@@ -1,0 +1,52 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- Model files (download instructions in docs/MODEL_CARD.md) ---
+models/*
+!models/.gitkeep
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.joblib
+*.pkl
+*.onnx
+checkpoints/
+runs/
+
+# --- Dataset caches ---
+data_cache/
+.hf_cache/
+
+# --- LLM response cache ---
+.llm_cache/
+
+# --- Gradio ---
+.gradio/
+flagged/
