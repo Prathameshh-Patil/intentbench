@@ -8,6 +8,18 @@ Three ways to classify short user messages into 150 intents (TF-IDF + logistic r
 
 [CLINC150](https://huggingface.co/datasets/clinc_oos) (`plus` configuration): short user queries labelled with 150 intents plus out-of-scope.
 
+## Run locally
+
+Requires Python 3.11+ (3.12 recommended).
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+python -m intentbench.data   # downloads CLINC150 and prints the split sizes
+pytest -q                    # run the tests
+```
+
 ## License
 
 MIT
