@@ -7,3 +7,4 @@ One line per decision, with the reason.
 - **MIT license**: short, permissive, standard for portfolio code.
 - **Model weights, dataset caches and LLM cache are git-ignored**: they are large or regenerable; the model card explains how to obtain the models.
 - **LLM response cache lives in `.llm_cache/`**: a fixed, ignored location so re-runs are free and reproducible.
+- **Git remote uses SSH, not HTTPS**: the `gh` token lacked the `workflow` scope needed to push `.github/workflows/`; SSH authenticates with your own key instead.
