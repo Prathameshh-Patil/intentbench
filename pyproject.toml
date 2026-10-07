@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intentbench"
+version = "0.1.0"
+description = "Three ways to classify text, measured: TF-IDF + logistic regression vs DistilBERT vs an LLM on CLINC150"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.0",
+    "pandas>=2.2",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "jupyter>=1.0",
+    "nbconvert>=7.0",
+    "ipykernel>=6.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+# E/F: errors and pyflakes, I: import order, B: likely bugs, UP: modern syntax
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
