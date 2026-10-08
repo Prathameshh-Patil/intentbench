@@ -33,7 +33,8 @@ PRICE_SOURCE = (
 
 CACHE_DIR = ROOT / ".llm_cache"
 OOS_NAME = "out_of_scope"  # the LLM sees this instead of the dataset's terse "oos"
-MAX_RATE_LIMIT_RETRIES = 8
+MAX_RETRIES = 8
+REQUEST_TIMEOUT_S = 30
 
 
 @dataclass
@@ -57,11 +58,16 @@ def load_env(path=ROOT / ".env") -> None:
 @cache
 def _gemini_client():
     from google import genai
+    from google.genai import types
 
     load_env()
     if not os.environ.get("GEMINI_API_KEY"):
         raise RuntimeError("GEMINI_API_KEY is not set. Put it in .env (see .env.example).")
-    return genai.Client()
+    # A timeout so a stuck request can't hang the run; SDK retries off, `call_llm` retries.
+    options = types.HttpOptions(
+        timeout=REQUEST_TIMEOUT_S * 1000, retry_options=types.HttpRetryOptions(attempts=1)
+    )
+    return genai.Client(http_options=options)
 
 
 def call_llm(system: str, user: str, model: str = MODEL) -> LLMResponse:
@@ -69,6 +75,7 @@ def call_llm(system: str, user: str, model: str = MODEL) -> LLMResponse:
 
     This is the only provider-specific function in the project.
     """
+    import httpx
     from google.genai import errors, types
 
     config = types.GenerateContentConfig(
@@ -84,14 +91,21 @@ def call_llm(system: str, user: str, model: str = MODEL) -> LLMResponse:
         },
         thinking_config=types.ThinkingConfig(thinking_level="minimal"),
     )
-    for attempt in range(MAX_RATE_LIMIT_RETRIES + 1):
+    for attempt in range(MAX_RETRIES + 1):
         start = time.perf_counter()
         try:
             r = _gemini_client().models.generate_content(model=model, contents=user, config=config)
-        except errors.APIError as e:
-            # 429 = rate limited, 5xx = temporary server problem: wait and try again.
-            if e.code in (429, 500, 503) and attempt < MAX_RATE_LIMIT_RETRIES:
-                time.sleep(min(2**attempt, 60))
+        except (errors.APIError, httpx.TransportError) as e:
+            # 429 = rate limited, 5xx = temporary server problem, timeouts and network errors:
+            # wait and try again. Anything else (e.g. 400 bad request) is a bug, so raise it.
+            code = getattr(e, "code", None)
+            retryable = isinstance(e, httpx.TransportError) or code in (429, 500, 502, 503, 504)
+            if retryable and attempt < MAX_RETRIES:
+                wait = min(2**attempt, 60)
+                print(
+                    f"    retry {attempt + 1}/{MAX_RETRIES} in {wait}s: {code or type(e).__name__}"
+                )
+                time.sleep(wait)
                 continue
             raise
         seconds = time.perf_counter() - start
