@@ -18,6 +18,7 @@ dependencies = [
     "transformers>=4.45",
     "accelerate>=1.0",
     "google-genai>=1.50",
+    "groq>=1.0",
 ]
 
 [project.optional-dependencies]

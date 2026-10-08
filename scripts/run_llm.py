@@ -4,7 +4,8 @@ Usage:
   python scripts/run_llm.py --variant zero --limit 20   # dry run: 20 requests + cost estimate
   python scripts/run_llm.py --variant zero              # full validation sample
   python scripts/run_llm.py --variant few
-Outputs (full run only): reports/llm_<variant>_validation.json and ..._requests.csv
+Provider: LLM_PROVIDER in .env (groq or gemini).
+Outputs (full run only): reports/llm_<provider>_<variant>_validation.json and ..._requests.csv
 """
 
 import argparse
@@ -42,6 +43,7 @@ def main() -> None:
         dev = splits.validation.drop(sample.index)  # never the rows we score on
         examples = llm.select_few_shot_examples(splits, dev)
     clf = llm.LLMClassifier(splits.labels, examples)
+    print(f"Provider: {clf.provider.name}, model: {clf.model}")
     rows = sample.head(args.limit) if args.limit else sample
 
     preds = []
@@ -62,7 +64,15 @@ def main() -> None:
             "pred": [splits.labels[p.label] for p in preds],
             **{
                 k: [getattr(p, k) for p in preds]
-                for k in ("valid", "cached", "input_tokens", "output_tokens", "seconds", "cost_usd")
+                for k in (
+                    "valid",
+                    "cached",
+                    "input_tokens",
+                    "cached_input_tokens",
+                    "output_tokens",
+                    "seconds",
+                    "cost_usd",
+                )
             },
         }
     )
@@ -70,7 +80,14 @@ def main() -> None:
         rows["label"], [p.label for p in preds], splits.oos_id, len(splits.labels)
     )
     mean_cost = requests["cost_usd"].mean()
-    print(f"\nPrompt (system) tokens per request: ~{int(requests['input_tokens'].median())}")
+    print(
+        f"\nInput tokens per request: ~{int(requests['input_tokens'].median())} "
+        f"(of which served from the provider's prompt cache: "
+        f"~{int(requests['cached_input_tokens'].median())})"
+    )
+    print(
+        f"Output tokens per request (incl. reasoning): ~{int(requests['output_tokens'].median())}"
+    )
     print(f"Mean cost per request at paid-tier prices: ${mean_cost:.6f}")
     print(f"  -> per 1,000 requests: ${mean_cost * 1000:.3f}")
     planned = LLM_VALIDATION_SAMPLE + LLM_TEST_SAMPLE
@@ -102,22 +119,25 @@ def main() -> None:
     }
     fresh = requests[~requests["cached"]]
     report = {
-        "approach": f"llm_{args.variant}_shot",
+        "approach": f"llm_{clf.provider.name}_{args.variant}_shot",
         "split": "validation",
         "sample_size": len(rows),
-        "model": llm.MODEL,
+        "provider": clf.provider.name,
+        "model": clf.model,
         "metrics": metrics,
         "other_approaches_on_same_sample": reference,
         "tokens": {
             "input_mean": round(float(requests["input_tokens"].mean()), 1),
+            "cached_input_mean": round(float(requests["cached_input_tokens"].mean()), 1),
             "output_mean": round(float(requests["output_tokens"].mean()), 1),
         },
         "cost": {
             "per_request_usd": round(float(mean_cost), 7),
             "per_1000_requests_usd": round(float(mean_cost * 1000), 4),
-            "price_input_per_m": llm.PRICE_INPUT_PER_M,
-            "price_output_per_m": llm.PRICE_OUTPUT_PER_M,
-            "price_source": llm.PRICE_SOURCE,
+            "price_input_per_m": clf.provider.price_input_per_m,
+            "price_cached_input_per_m": clf.provider.price_cached_input_per_m,
+            "price_output_per_m": clf.provider.price_output_per_m,
+            "price_source": clf.provider.price_source,
         },
         "latency_uncached": latency_stats(fresh["seconds"].tolist()),
         "latency_all_original_calls": latency_stats(requests["seconds"].tolist()),
@@ -126,7 +146,7 @@ def main() -> None:
         "system_prompt": clf.system,
         "environment": environment_info(),
     }
-    stem = f"llm_{args.variant}_validation"
+    stem = f"llm_{clf.provider.name}_{args.variant}_validation"
     (REPORTS_DIR / f"{stem}.json").write_text(json.dumps(report, indent=2))
     requests.to_csv(REPORTS_DIR / f"{stem}_requests.csv", index=False)
     print(f"\nWrote reports/{stem}.json and {stem}_requests.csv")
