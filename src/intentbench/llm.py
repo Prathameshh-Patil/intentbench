@@ -35,6 +35,17 @@ CACHE_DIR = ROOT / ".llm_cache"
 OOS_NAME = "out_of_scope"  # the LLM sees this instead of the dataset's terse "oos"
 MAX_RETRIES = 8
 REQUEST_TIMEOUT_S = 30
+_last_request_at = 0.0
+
+
+def _wait_for_rate_limit() -> None:
+    """Space requests to stay under GEMINI_RPM requests per minute (free tier: 15)."""
+    global _last_request_at
+    min_interval = 60 / float(os.environ.get("GEMINI_RPM", "15"))
+    wait = _last_request_at + min_interval - time.monotonic()
+    if wait > 0:
+        time.sleep(wait)
+    _last_request_at = time.monotonic()
 
 
 @dataclass
@@ -92,7 +103,8 @@ def call_llm(system: str, user: str, model: str = MODEL) -> LLMResponse:
         thinking_config=types.ThinkingConfig(thinking_level="minimal"),
     )
     for attempt in range(MAX_RETRIES + 1):
-        start = time.perf_counter()
+        _wait_for_rate_limit()
+        start = time.perf_counter()  # latency excludes the pacing wait
         try:
             r = _gemini_client().models.generate_content(model=model, contents=user, config=config)
         except (errors.APIError, httpx.TransportError) as e:
