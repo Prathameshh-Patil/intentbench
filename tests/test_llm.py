@@ -61,3 +61,27 @@ def test_prompt_lists_every_intent_and_examples():
     assert "balance" in system and "transfer" in system and "out_of_scope" in system
     assert '"what\'s my balance" -> balance' in system
     assert "\noos\n" not in system
+
+
+def test_daily_quota_stops_immediately(monkeypatch):
+    from google.genai import errors
+
+    attempts = []
+
+    class FakeModels:
+        def generate_content(self, **kwargs):
+            attempts.append(1)
+            body = {
+                "error": {
+                    "code": 429,
+                    "message": "quota",
+                    "details": [{"quotaId": "GenerateRequestsPerDayPerProjectPerModel"}],
+                }
+            }
+            raise errors.ClientError(429, body)
+
+    monkeypatch.setattr(llm, "_gemini_client", lambda: type("C", (), {"models": FakeModels()})())
+    monkeypatch.setattr(llm, "_wait_for_rate_limit", lambda: None)
+    with pytest.raises(llm.DailyQuotaExceeded):
+        llm.call_llm("system", "user")
+    assert len(attempts) == 1

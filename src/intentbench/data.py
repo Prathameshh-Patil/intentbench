@@ -23,7 +23,7 @@ OOS_LABEL = "oos"
 # The LLM is scored on fixed random samples to control cost; every approach is also reported
 # on the same samples so the comparison stays fair.
 LLM_VALIDATION_SAMPLE = 500
-LLM_TEST_SAMPLE = 1000
+LLM_TEST_SAMPLE = 400  # sized to the Gemini free tier's 500 requests/day
 
 
 @dataclass(frozen=True)

@@ -48,6 +48,10 @@ def _wait_for_rate_limit() -> None:
     _last_request_at = time.monotonic()
 
 
+class DailyQuotaExceeded(RuntimeError):
+    """The provider's daily request limit is used up; retrying today is pointless."""
+
+
 @dataclass
 class LLMResponse:
     text: str
@@ -111,6 +115,11 @@ def call_llm(system: str, user: str, model: str = MODEL) -> LLMResponse:
             # 429 = rate limited, 5xx = temporary server problem, timeouts and network errors:
             # wait and try again. Anything else (e.g. 400 bad request) is a bug, so raise it.
             code = getattr(e, "code", None)
+            if code == 429 and "PerDay" in str(e.details):
+                raise DailyQuotaExceeded(
+                    "Gemini daily request limit reached. Cached answers are kept; "
+                    "re-run after the quota resets."
+                ) from e
             retryable = isinstance(e, httpx.TransportError) or code in (429, 500, 502, 503, 504)
             if retryable and attempt < MAX_RETRIES:
                 wait = min(2**attempt, 60)
