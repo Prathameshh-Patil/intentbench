@@ -31,3 +31,12 @@ def test_label_maps():
 def test_normalize():
     assert normalize("  Bye!  ") == "bye"
     assert normalize("What's   UP?") == "whats up"
+
+
+def test_llm_sample_is_fixed():
+    from intentbench.data import llm_sample
+
+    s = load_splits()
+    a, b = llm_sample(s.validation, 50), llm_sample(s.validation, 50)
+    assert list(a.index) == list(b.index)
+    assert a.index.is_monotonic_increasing

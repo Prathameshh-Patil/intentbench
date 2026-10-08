@@ -20,6 +20,10 @@ DATASET_REVISION = "155b9c710419136e17307b80d0a13e68cd46b4ec"
 # One seed for everything random in the project (sampling, model init, shuffling).
 SEED = 42
 OOS_LABEL = "oos"
+# The LLM is scored on fixed random samples to control cost; every approach is also reported
+# on the same samples so the comparison stays fair.
+LLM_VALIDATION_SAMPLE = 500
+LLM_TEST_SAMPLE = 1000
 
 
 @dataclass(frozen=True)
@@ -85,6 +89,11 @@ def load_splits() -> Splits:
         removed_from_train=int(train_leaked.sum()),
         removed_from_validation=int(val_leaked.sum()),
     )
+
+
+def llm_sample(df: pd.DataFrame, n: int) -> pd.DataFrame:
+    """A fixed random sample (same rows on every run), in original order."""
+    return df.sample(n=n, random_state=SEED).sort_index()
 
 
 def main() -> None:
