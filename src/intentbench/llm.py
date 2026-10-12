@@ -1,8 +1,8 @@
 """Zero-shot and few-shot intent classification with an LLM.
 
-- Two providers are supported (Groq and Gemini), chosen with LLM_PROVIDER in .env. Each has one
-  small `_send_*` function; `call_llm` adds pacing, timing and retries around it. Adding a
-  provider means writing one more `_send_*` function and a `Provider` entry.
+- Two providers are supported (Gemini, used for all reported results, and Groq), chosen with
+  LLM_PROVIDER in .env. Each has one small `_send_*` function; `call_llm` adds pacing, timing
+  and retries around it. Adding a provider means one more `_send_*` function and a `Provider`.
 - The answer must be JSON {"intent": "<name>"}. On Groq, strict structured output restricts
   <name> to the 151 valid intents (constrained decoding). Gemini rejects an enum that large, so
   there the answer is parsed strictly. On both, an invalid answer gets one retry.
@@ -78,7 +78,7 @@ def load_env(path=ROOT / ".env") -> None:
 
 def provider() -> Provider:
     load_env()
-    return PROVIDERS[os.environ.get("LLM_PROVIDER") or "groq"]
+    return PROVIDERS[os.environ.get("LLM_PROVIDER") or "gemini"]
 
 
 class DailyQuotaExceeded(RuntimeError):

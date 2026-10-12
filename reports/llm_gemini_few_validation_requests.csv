@@ -1,0 +1,501 @@
+text,true,pred,valid,cached,input_tokens,cached_input_tokens,output_tokens,seconds,cost_usd
+"in spanish, meet me tomorrow is said how",translate,translate,True,True,2131,0,6,2.0967053750064224,0.0006542999999999999
+i want to know how to say goodbye in france,translate,translate,True,True,2132,0,6,2.115167750045657,0.0006546
+move a dollar from my checkings to my savings,transfer,transfer,True,True,2132,0,6,19.477758332970552,0.0006546
+make an eft to my savings from my checking account,transfer,transfer,True,True,2132,0,6,9.167121791979298,0.0006546
+i need 200 dollars transferred from my long island savings account to my chase checking,transfer,transfer,True,True,2140,0,6,3.534047416993417,0.000657
+the timer should have 10 minutes set to it,timer,timer,True,True,2133,0,6,2.6178021249361336,0.0006548999999999999
+10 minutes is the setting for the timer,timer,timer,True,True,2132,0,11,4.9213648330187425,0.0006671
+can you set a 30 second timer,timer,timer,True,True,2131,0,6,1.774525084067136,0.0006542999999999999
+i need a timer set please,timer,timer,True,True,2128,0,11,13.763658917043358,0.0006659
+create a timer that is set to go off after 25 mins,timer,timer,True,True,2136,0,6,7.093354125041515,0.0006558
+set up a 52 minute timer,timer,timer,True,True,2130,0,6,4.506677124998532,0.000654
+can you tell me what a septuagenarian is,definition,definition,True,True,2133,0,6,8.376102917012759,0.0006548999999999999
+what does idiosyncratic mean,definition,definition,True,True,2126,0,11,8.461571791907772,0.0006653
+tell me the meaning of hegemony,definition,definition,True,True,2128,0,6,1.681782791041769,0.0006533999999999999
+please define institutional racism,definition,definition,True,True,2126,0,11,8.321742124971934,0.0006653
+i want to know what the purpose of life is,meaning_of_life,meaning_of_life,True,True,2132,0,15,2.5849522079806775,0.0006771
+tell me all about the meaning of life,meaning_of_life,meaning_of_life,True,True,2130,0,10,3.0610460420139134,0.000664
+"can you tell me, what is the meaning of life",meaning_of_life,meaning_of_life,True,True,2133,0,10,23.097746875020675,0.0006649
+explain to me how do i get new insurance,insurance_change,insurance,True,True,2131,0,11,7.2008222920121625,0.0006667999999999999
+i'd like to know how to make changes for my insurance policy,insurance_change,insurance_change,True,True,2136,0,8,4.247974999947473,0.0006607999999999999
+please help me in finding my phone,find_phone,find_phone,True,True,2129,0,13,1.9175439579412341,0.0006711999999999999
+tell me where i left my phone,find_phone,find_phone,True,True,2129,0,8,1.5570493750274181,0.0006586999999999999
+where would my phone be,find_phone,find_phone,True,True,2127,0,8,2.1750371670350432,0.0006581
+my phone is lost and i need help finding it,find_phone,find_phone,True,True,2132,0,8,1.3711146250134334,0.0006596
+is france safe to travel to,travel_alert,travel_alert,True,True,2128,0,13,1.8036638750927523,0.0006709
+can i safely travel to france or is it dangerous,travel_alert,travel_alert,True,True,2132,0,8,1.4689280840102583,0.0006596
+what's the danger level of flying to russia right now,travel_alert,travel_alert,True,True,2134,0,8,1.340654750005342,0.0006601999999999999
+does mexico have any travel alerts i should know about,travel_alert,travel_alert,True,True,2132,0,13,1.3988750410499051,0.0006721
+can you please request pto for march 2 and 3,pto_request,pto_request,True,True,2135,0,13,1.6034477499779314,0.000673
+am i able to put in a pto request for may 6 to may 18,pto_request,pto_request,True,True,2141,0,13,1.1874731249408796,0.0006747999999999999
+i need to know if i can put a pto request in for march 10 to march 12,pto_request,pto_request,True,True,2145,0,13,1.3650223339209333,0.000676
+tell me whether i can put a pto request in for may 10 to may 15,pto_request,pto_request,True,True,2143,0,13,1.2895573750138283,0.0006753999999999999
+what is the process for making a vacation request,pto_request,pto_request,True,True,2131,0,8,1.1562366669531912,0.0006592999999999999
+what's the method for requesting a vacation,pto_request,pto_request,True,True,2131,0,13,1.2762807910330594,0.0006718
+what are the steps required for making a vacation request,pto_request,pto_request,True,True,2132,0,8,1.685534083051607,0.0006596
+please help me make a request for vacation,pto_request,pto_request,True,True,2130,0,8,1.1485574999824166,0.000659
+what can i do to get a better credit score,improve_credit_score,improve_credit_score,True,True,2132,0,10,1.5609625419601798,0.0006646
+will getting a credit card help my credit score,improve_credit_score,improve_credit_score,True,True,2131,0,15,1.2233537080464885,0.0006768
+what are some easy ways to make my credit score better,improve_credit_score,improve_credit_score,True,True,2133,0,15,1.6944962909910828,0.0006774
+what is the best way to insure that my credit score doesn't decrease,improve_credit_score,improve_credit_score,True,True,2137,0,15,1.5518340419512242,0.0006786
+what is the best way to keep my credit score from going down,improve_credit_score,improve_credit_score,True,True,2135,0,15,2.8899044159334153,0.000678
+how can i safeguard my credit score from dropping,improve_credit_score,improve_credit_score,True,True,2131,0,15,1.4065588330850005,0.0006768
+give me a cool fact about new orleans,fun_fact,fun_fact,True,True,2131,0,13,2.7521712919697165,0.0006718
+what's a fun fact about axolotls,fun_fact,fun_fact,True,True,2132,0,13,1.7956865000305697,0.0006721
+tell me an axolotl fact,fun_fact,fun_fact,True,True,2129,0,8,1.7203054169658571,0.0006586999999999999
+find me cat trivia now please,fun_fact,fun_fact,True,True,2128,0,13,1.7649028750602156,0.0006709
+change the language to english,change_language,change_language,True,True,2127,0,8,1.4229819169268012,0.0006581
+when's the next time i get paid,payday,payday,True,True,2131,0,12,1.937503166962415,0.0006693
+when am i paid or how often,payday,payday,True,True,2129,0,12,1.5085039170226082,0.0006686999999999999
+when did i get my check last,payday,payday,True,True,2129,0,12,1.9718775419751182,0.0006686999999999999
+what date is the next payday,payday,payday,True,True,2128,0,12,1.0579246249981225,0.0006684
+what date is the next day i get paid,payday,payday,True,True,2131,0,12,2.0378468750277534,0.0006693
+when is the next payday,payday,payday,True,True,2127,0,7,1.1948095000116155,0.0006556
+about how long does it usually take a new card to get mailed to me,replacement_card_duration,replacement_card_duration,True,True,2137,0,15,1.4101529159815982,0.0006786
+"if i lose my credit card, will i get a replacement immediately",replacement_card_duration,replacement_card_duration,True,True,2135,0,15,1.113314290996641,0.000678
+what time is it in the pacific timezone,time,time,True,True,2130,0,6,1.7520107079762965,0.000654
+what time is it over in pacific time,time,time,True,True,2130,0,6,1.2172503750771284,0.000654
+how late is it now in ourense,time,time,True,True,2131,0,11,1.0018921659793705,0.0006667999999999999
+what time is it now in michigan,time,time,True,True,2130,0,6,1.123605375061743,0.000654
+what's the clock say,time,time,True,True,2128,0,11,1.3422287920257077,0.0006659
+at what point will the review of my credit card application be completed,application_status,application_status,True,True,2135,0,8,1.0536360000260174,0.0006605
+when will my credit card application be reviewed,application_status,application_status,True,True,2130,0,8,1.447501582908444,0.000659
+when am i boarding my flight,flight_status,flight_status,True,True,2128,0,13,1.201162499957718,0.0006709
+at what time should i be boarding my flight,flight_status,flight_status,True,True,2131,0,13,1.352985915960744,0.0006718
+when is the expected arrival of flight dl123,flight_status,flight_status,True,True,2133,0,13,1.6296962080523372,0.0006724
+is flight dl123 due to land as schedule,flight_status,flight_status,True,True,2133,0,13,1.49989058310166,0.0006724
+could you tell me the status of flight dl123,flight_status,flight_status,True,True,2134,0,13,1.255261000012979,0.0006726999999999999
+when is my flight expected to arrive,flight_status,flight_status,True,True,2129,0,8,1.0939855000469834,0.0006586999999999999
+can you flip a coin i pick heads,flip_coin,flip_coin,True,True,2130,0,8,1.5474694999866188,0.000659
+please flip a coin,flip_coin,flip_coin,True,True,2126,0,8,1.275566832977347,0.0006577999999999999
+please flip the coin over ai,flip_coin,flip_coin,True,True,2128,0,13,1.2765349160181358,0.0006709
+you can call me jason,change_user_name,change_user_name,True,True,2128,0,10,3.0775390419876203,0.0006634
+jason is my name,change_user_name,change_user_name,True,True,2127,0,10,1.3457140839891508,0.0006631
+where are you from before you got here,where_are_you_from,where_are_you_from,True,True,2130,0,12,1.2874053340638056,0.000669
+what's your home town,where_are_you_from,where_are_you_from,True,True,2128,0,12,1.2293325000209734,0.0006684
+can you add apples to my shopping list if they aren't already on there,shopping_list_update,shopping_list_update,True,True,2138,0,10,1.1520528339315206,0.0006663999999999999
+do i have peanuts on my shopping list if not please add it,shopping_list_update,shopping_list_update,True,True,2135,0,10,1.1292544170282781,0.0006655
+i'm out of kleenex so will you put that on my shopping list,shopping_list_update,shopping_list_update,True,True,2139,0,15,1.2475962500320747,0.0006791999999999999
+i'm out of paper towels so will you put that on my shopping list,shopping_list_update,shopping_list_update,True,True,2138,0,10,1.615792208001949,0.0006663999999999999
+i'm out of clorox wipes so will you put that on my shopping list,shopping_list_update,shopping_list_update,True,True,2139,0,10,1.2104110419750214,0.0006666999999999999
+i'm out of laundry detergent so will you put that on my shopping list,shopping_list_update,shopping_list_update,True,True,2138,0,15,1.5540200410177931,0.0006789
+what kind of things can i ask the ai,what_can_i_ask_you,what_can_i_ask_you,True,True,2131,0,19,1.1563547499245033,0.0006868
+what kinds of subjects do you know about,what_can_i_ask_you,what_can_i_ask_you,True,True,2130,0,14,1.1123049579327926,0.000674
+which kinds of info are you familiar with,what_can_i_ask_you,what_can_i_ask_you,True,True,2130,0,19,1.1008557910099626,0.0006865
+what kind of information do you know,what_can_i_ask_you,what_can_i_ask_you,True,True,2129,0,19,1.074091749964282,0.0006862
+what kind of questions can you answer,what_can_i_ask_you,what_can_i_ask_you,True,True,2129,0,19,1.258558625006117,0.0006862
+i do not have that information,maybe,oos,True,True,2128,0,10,1.2644279160303995,0.0006634
+possibly either one,maybe,oos,True,True,2125,0,10,1.1439924169098958,0.0006625
+don't have any idea,maybe,oos,True,True,2128,0,10,1.3120498340576887,0.0006634
+i couldn't say,maybe,oos,True,True,2127,0,10,1.1217669999459758,0.0006631
+i don't have an answer for that,maybe,oos,True,True,2131,0,10,1.3772202091058716,0.0006642999999999999
+"i want to know how to change oil, tell me the steps one at a time while i work through it",oil_change_how,oil_change_how,True,True,2144,0,15,1.9575241249985993,0.0006806999999999999
+what oil do i need for my honda crv and how do i change it,oil_change_how,oil_change_how,True,True,2138,0,15,1.3397087079938501,0.0006789
+can you find some instructions on how to change my oil,oil_change_how,oil_change_how,True,True,2133,0,15,1.5493309169542044,0.0006774
+please reserve a table for 2 at lucky's under the name melissa at 7 pm,restaurant_reservation,restaurant_reservation,True,True,2142,0,13,1.4716539590153843,0.0006751
+are there 8pm tables available at texas roadhouse,restaurant_reservation,restaurant_reservation,True,True,2133,0,13,1.1294381249463186,0.0006724
+book a reservation for 3 at xenophobe under the name zebee,restaurant_reservation,restaurant_reservation,True,True,2137,0,13,1.1810482919681817,0.0006736
+reserve a table for 3 under the name wheeler at andrea's steakhouse for 5pm,restaurant_reservation,restaurant_reservation,True,True,2144,0,8,1.2366834999993443,0.0006632
+could be there be a good amount of money in my checking account to go on a vacation,balance,balance,True,True,2140,0,11,1.1181765419896692,0.0006695
+can i afford a new tv from my savings account,balance,oos,True,True,2132,0,10,1.2110824170522392,0.0006646
+i am not sure if i have enough money in my chase account to buy a new dress,balance,balance,True,True,2140,0,6,1.1732162080006674,0.000657
+i would like to try and confirm that i have a reservation at outback for josh,confirm_reservation,confirm_reservation,True,True,2140,0,8,1.2752187079750001,0.000662
+i would like to try and confirm that i have a reservation at carrabbas for heather,confirm_reservation,confirm_reservation,True,True,2139,0,8,1.0590387500124052,0.0006617
+you know the reservation i have on 2:00 friday i confirm it,confirm_reservation,confirm_reservation,True,True,2138,0,8,1.1156850840197876,0.0006614
+is my dinner reservation for gusto handcrafted pasta & pizza at 6:30 pm still valid,confirm_reservation,confirm_reservation,True,True,2141,0,13,1.1704579590586945,0.0006747999999999999
+please put a block on my discover account immediately,freeze_account,freeze_account,True,True,2131,0,8,1.1137117909966037,0.0006592999999999999
+please put a hold on my retirement account right now,freeze_account,oos,True,True,2132,0,10,1.3159289590548724,0.0006646
+i need a block placed right away on my joint checking account,freeze_account,freeze_account,True,True,2134,0,8,1.0320879579521716,0.0006601999999999999
+i want a block placed on my college fund account immediately,freeze_account,freeze_account,True,True,2133,0,8,1.3498768749414012,0.0006598999999999999
+can the 401k i have be rolled over,rollover_401k,rollover_401k,True,True,2134,0,12,1.5187367500038818,0.0006701999999999999
+is there a way to roll over my 401k,rollover_401k,rollover_401k,True,True,2135,0,12,1.3286953329807147,0.0006705
+am i able to rollover my 401k,rollover_401k,rollover_401k,True,True,2133,0,12,1.0841443330282345,0.0006699
+how should i rollover my 401k,rollover_401k,rollover_401k,True,True,2132,0,17,1.0864607079420239,0.0006821
+who is responsible for your design,who_made_you,who_made_you,True,True,2128,0,15,1.7550817909650505,0.0006759
+what firm is responsible for your design,who_made_you,who_made_you,True,True,2129,0,15,1.664744665962644,0.0006762
+who conjured you,who_made_you,who_made_you,True,True,2126,0,15,1.7308156659128144,0.0006753
+"who or what programmed you, do you know",who_made_you,who_made_you,True,True,2131,0,15,1.3765787909505889,0.0006768
+whats the travel time to redmond right now,distance,traffic,True,True,2131,0,11,1.2785854999674484,0.0006667999999999999
+how long will the trip to portland be,distance,distance,True,True,2130,0,11,1.6882167500443757,0.0006665
+how long is it going to take me to get to bellevue,distance,distance,True,True,2136,0,6,2.0243432499701157,0.0006558
+how much time to drive to the closest bank,distance,distance,True,True,2131,0,11,1.1610344999935478,0.0006667999999999999
+how many miles away am i from madison square garden,distance,distance,True,True,2132,0,11,1.4802323339972645,0.0006671
+how long would it take to get to chicago by bus,distance,distance,True,True,2133,0,6,1.2329453330021352,0.0006548999999999999
+do you think my name is jeff,user_name,user_name,True,True,2129,0,13,1.552725583082065,0.0006711999999999999
+what is the name you would use for me,user_name,user_name,True,True,2131,0,13,1.2855472919763997,0.0006718
+what timezone is honolulu in,timezone,timezone,True,True,2128,0,6,2.183521750033833,0.0006533999999999999
+british columbia can be found in what timezone,timezone,timezone,True,True,2131,0,11,1.330870124977082,0.0006667999999999999
+in what timezone is atlanta located,timezone,timezone,True,True,2129,0,6,1.7018945829477161,0.0006536999999999999
+"now, i want you to play the next song",next_song,next_song,True,True,2132,0,13,1.476977749960497,0.0006721
+can you skip this song and go to the next one,next_song,next_song,True,True,2133,0,8,1.1535022909520194,0.0006598999999999999
+show all purchases of video games,transactions,spending_history,True,True,2128,0,13,1.3413858329877257,0.0006709
+show me all video games purchased,transactions,spending_history,True,True,2128,0,8,1.5067543329205364,0.0006584
+list all purchases of video games,transactions,spending_history,True,True,2128,0,13,1.7515724590048194,0.0006709
+what transactions have i made in the last few weeks,transactions,transactions,True,True,2132,0,11,1.0831933749141172,0.0006671
+what items do i have on my amex card this month,transactions,transactions,True,True,2134,0,11,1.1853713339660317,0.0006676999999999999
+what withdrawals were there on my account yesterday,transactions,transactions,True,True,2130,0,6,1.1008755000075325,0.000654
+do you have any restaurant recommendations,restaurant_suggestion,restaurant_suggestion,True,True,2128,0,13,1.7890613749623299,0.0006709
+are there decent seafood restaurants in portland,restaurant_suggestion,restaurant_suggestion,True,True,2129,0,13,1.263597209006548,0.0006711999999999999
+what is my gymboree card's rewards balance,rewards_balance,rewards_balance,True,True,2133,0,13,1.487411749898456,0.0006724
+how do i check my rewards for my maurices card,rewards_balance,rewards_balance,True,True,2134,0,13,1.1050490000052378,0.0006726999999999999
+how many points have i earned with my amex card,rewards_balance,rewards_balance,True,True,2133,0,8,1.1103397089755163,0.0006598999999999999
+pay a bill!,pay_bill,pay_bill,True,True,2126,0,8,1.2428317910525948,0.0006577999999999999
+pay my monthy mortgage payment,pay_bill,pay_bill,True,True,2128,0,13,1.4562515000579879,0.0006709
+use my savings account to pay xfinity,pay_bill,pay_bill,True,True,2130,0,8,1.185872875037603,0.000659
+i want to pay my cable bill directly from my checking account,pay_bill,pay_bill,True,True,2134,0,13,1.190650042030029,0.0006726999999999999
+how much have i spent lately,spending_history,spending_history,True,True,2128,0,8,1.4107944580027834,0.0006584
+how much money have i recently spent on stuff,spending_history,spending_history,True,True,2131,0,13,1.2493372919270769,0.0006718
+"did i buy too many donuts recently, like last week",spending_history,spending_history,True,True,2133,0,13,1.3423566250130534,0.0006724
+tell me how much i have spent on grocery shopping just now,spending_history,spending_history,True,True,2134,0,8,1.4781886250711977,0.0006601999999999999
+what's the status on my vacation approval,pto_request_status,pto_request_status,True,True,2131,0,10,1.8337577499914914,0.0006642999999999999
+has my request for time off been approved,pto_request_status,pto_request_status,True,True,2130,0,15,1.6238600419601426,0.0006765
+how can i request my credit score,credit_score,credit_score,True,True,2129,0,13,1.6804089170182124,0.0006711999999999999
+who do i contact for lost luggage,lost_luggage,lost_luggage,True,True,2129,0,14,2.3716443750308827,0.0006737
+where is my luggage,lost_luggage,lost_luggage,True,True,2126,0,14,2.0434497910318896,0.0006728
+who can i call about my luggage,lost_luggage,lost_luggage,True,True,2129,0,14,2.3787346669705585,0.0006737
+what should i do if i lost my luggage,lost_luggage,lost_luggage,True,True,2131,0,14,1.5965665419353172,0.0006743
+what do i do if i lost my luggage,lost_luggage,lost_luggage,True,True,2131,0,14,1.2486749170348048,0.0006743
+i did not hear what you said,repeat,repeat,True,True,2129,0,11,1.452246166067198,0.0006661999999999999
+what was said,repeat,repeat,True,True,2125,0,11,1.2050968749681488,0.000665
+repeat that once more,repeat,repeat,True,True,2126,0,6,1.3812187500298023,0.0006527999999999999
+please say that again,repeat,repeat,True,True,2126,0,6,1.387896875035949,0.0006527999999999999
+what kind of gas mileage does this car get when going through a city,mpg,mpg,True,True,2136,0,11,1.7024687920929864,0.0006682999999999999
+what's the mpg rating on my car,mpg,mpg,True,True,2131,0,6,1.9219595830654725,0.0006542999999999999
+can you tell me when i should change my oil,oil_change_when,oil_change_when,True,True,2132,0,15,0.9872327499324456,0.0006771
+when does my oil need to be changed,oil_change_when,oil_change_when,True,True,2130,0,15,1.4572969580767676,0.0006765
+when i should change oil,oil_change_when,oil_change_when,True,True,2127,0,15,1.3515014169970527,0.0006756
+you are correct,yes,yes,True,True,2125,0,6,1.1433442090637982,0.0006525
+agreed,yes,yes,True,True,2123,0,11,1.5310917081078514,0.0006644
+affirmitive,yes,yes,True,True,2124,0,6,1.5022170410957187,0.0006521999999999999
+find the favorite destination for traveling this year,travel_suggestion,travel_suggestion,True,True,2130,0,13,1.1212266669608653,0.0006715
+"i would like to find a list of cool things recommended for tourists in copenhagen, denmark",travel_suggestion,travel_suggestion,True,True,2141,0,13,1.9301392500055954,0.0006747999999999999
+please do a search for entertaining activities for tourists in mexico city,travel_suggestion,travel_suggestion,True,True,2134,0,13,1.668240875005722,0.0006726999999999999
+what kind of insurance do i have,insurance,insurance,True,True,2129,0,11,1.299466000054963,0.0006661999999999999
+wipe my todo list please,todo_list_update,todo_list_update,True,True,2127,0,10,1.9983214169042185,0.0006631
+read my reminder list back to me,reminder,reminder,True,True,2129,0,6,1.9069786249892786,0.0006536999999999999
+i want to hear my reminder list,reminder,reminder,True,True,2129,0,6,1.5994572080671787,0.0006536999999999999
+what is my plan for the day,reminder,calendar,True,True,2129,0,6,1.2625104589387774,0.0006536999999999999
+what are the things i wanted to recall,reminder,reminder,True,True,2130,0,6,1.4573360420763493,0.000654
+read all my reminders,reminder,reminder,True,True,2126,0,6,1.6795583749189973,0.0006527999999999999
+can you permanently talk faster,change_speed,change_speed,True,True,2127,0,13,1.579490749980323,0.0006706
+can you raise your speaking speed,change_speed,change_speed,True,True,2128,0,13,1.0958553749369457,0.0006709
+go ahead and talk faster now,change_speed,change_speed,True,True,2128,0,13,1.3899509580805898,0.0006709
+please talk faster,change_speed,change_speed,True,True,2125,0,13,1.2647463749162853,0.00067
+could you speak faster,change_speed,change_speed,True,True,2126,0,13,1.190280457958579,0.0006703
+do my tires have enough air in them,tire_pressure,tire_pressure,True,True,2130,0,8,1.433981499983929,0.000659
+how is my tire pressure,tire_pressure,tire_pressure,True,True,2127,0,13,1.170984375057742,0.0006706
+do my car tires have enough psi in them,tire_pressure,tire_pressure,True,True,2131,0,8,1.4456786669325083,0.0006592999999999999
+how much psi is in my car tires,tire_pressure,tire_pressure,True,True,2130,0,13,1.3074599580140784,0.0006715
+how much air are in my tires,tire_pressure,tire_pressure,True,True,2129,0,13,1.3498640410834923,0.0006711999999999999
+hell nah,no,no,True,True,2124,0,6,1.1535368750337511,0.0006521999999999999
+thats a negative,no,no,True,True,2125,0,6,1.539783125044778,0.0006525
+"no, that is not correct",no,no,True,True,2128,0,6,1.3233010419644415,0.0006533999999999999
+negatory,no,no,True,True,2124,0,6,1.1094822499435395,0.0006521999999999999
+invalid,no,oos,True,True,2123,0,10,1.1868599170120433,0.0006619
+absolutely not,no,no,True,True,2124,0,6,1.201908207964152,0.0006521999999999999
+is the apr on my card that ends 1234 what it should be based on my credit score,apr,apr,True,True,2144,0,11,1.2228092500008643,0.0006707
+i want to know the apr on my capital one card,apr,apr,True,True,2133,0,11,1.2669474580325186,0.0006674
+is my card's apr good,apr,apr,True,True,2129,0,11,1.3242445829091594,0.0006661999999999999
+what is my card's apr and is it good,apr,apr,True,True,2133,0,11,1.5860572499223053,0.0006674
+do you know the apr on my chase credit card,apr,apr,True,True,2132,0,11,1.0733890000265092,0.0006671
+how healthy is hummus,nutrition_info,nutrition_info,True,True,2126,0,13,1.193969374988228,0.0006703
+is chocolate good for you,nutrition_info,nutrition_info,True,True,2127,0,13,1.6100027499487624,0.0006706
+what is the nutritional info for kraft mac 'n' cheese,nutrition_info,nutrition_info,True,True,2134,0,13,1.089787541073747,0.0006726999999999999
+read me the nutrional info of a bag of lay's potato chips,nutrition_info,nutrition_info,True,True,2137,0,13,1.5486637910362333,0.0006736
+what is the nutrition information for shrimp scampi,nutrition_info,nutrition_info,True,True,2131,0,8,1.2569469580193982,0.0006592999999999999
+is raw carrot healthy to eat,nutrition_info,nutrition_info,True,True,2128,0,13,1.1513022909639403,0.0006709
+do i have plans on 12/03/2019,calendar,calendar,True,True,2138,0,11,1.2395341249648482,0.0006688999999999999
+is my day open for march 4th 2019,calendar,calendar,True,True,2136,0,6,1.5779768750071526,0.0006558
+is anything happening on march 4th 2019,calendar,calendar,True,True,2135,0,6,1.2452926250407472,0.0006555
+is there an uber going to downtown,uber,uber,True,True,2129,0,6,1.1177529169945046,0.0006536999999999999
+can you get uber for two people going to 27 moss lane,uber,uber,True,True,2136,0,6,1.2084389170631766,0.0006558
+i need your assistance to solve this math problem,calculator,calculator,True,True,2131,0,11,1.6275088330730796,0.0006667999999999999
+can you divide 100 by 20,calculator,calculator,True,True,2133,0,11,1.090029374929145,0.0006674
+what is 543 times 344,calculator,calculator,True,True,2133,0,11,1.2909866670379415,0.0006674
+is 126 divisible by 8,calculator,calculator,True,True,2131,0,6,1.5307200830429792,0.0006542999999999999
+tell me the date,date,date,True,True,2126,0,6,1.8274649169761688,0.0006527999999999999
+let me know what today's date is,date,date,True,True,2131,0,11,1.3256649170070887,0.0006667999999999999
+what date will it be 8 days from now,date,date,True,True,2132,0,11,1.4412704170681536,0.0006671
+is today monday,date,date,True,True,2125,0,6,1.411538458080031,0.0006525
+does spirit allow more than one carry on,carry_on,carry_on,True,True,2130,0,13,1.1322464159457013,0.0006715
+what's the carry on policy for delta,carry_on,carry_on,True,True,2131,0,8,2.4133913329569623,0.0006592999999999999
+what's delta's carry on policy,carry_on,carry_on,True,True,2131,0,13,1.5765582080930471,0.0006718
+what rules does southwest have for carry-on luggage,carry_on,carry_on,True,True,2132,0,13,1.2331236250465736,0.0006721
+can you give me the carry-on rules for american airlines,carry_on,carry_on,True,True,2134,0,13,1.2545125000178814,0.0006726999999999999
+can you tell me how much pto have i use,pto_used,pto_used,True,True,2133,0,8,1.3603090830147266,0.0006598999999999999
+how many of my off days have i run through for the year thus far,pto_used,pto_used,True,True,2137,0,13,1.4093118329765275,0.0006736
+remind me of how days i had off so far for the year,pto_used,pto_used,True,True,2135,0,13,1.4143968330463395,0.000673
+can you tell how many days i already took off this year,pto_used,pto_used,True,True,2134,0,8,1.2157644589897245,0.0006601999999999999
+could you book me an appointment for an oil change,schedule_maintenance,schedule_maintenance,True,True,2132,0,8,1.4100704579614103,0.0006596
+get a message to my bank that starting the 14th i'll be in canada,travel_notification,travel_notification,True,True,2141,0,8,1.2727303749416023,0.0006623
+alert my financial institution that i will be traveling to bangkok on april 2 and returning on april 7,travel_notification,travel_notification,True,True,2144,0,8,1.2083488330245018,0.0006632
+from april to may i will be in america so i need to notify my bank,travel_notification,travel_notification,True,True,2138,0,13,1.530334125040099,0.0006739
+i need to let my bank know i will be in america from april to may,travel_notification,travel_notification,True,True,2138,0,13,1.4496246250346303,0.0006739
+sync phone,sync_device,sync_device,True,True,2124,0,8,1.1173976660938933,0.0006571999999999999
+thank you for the help,thank_you,thank_you,True,True,2127,0,8,1.1995575000764802,0.0006581
+i am happy you did that for me,thank_you,thank_you,True,True,2130,0,8,1.4158026669174433,0.000659
+please roll a dice,roll_dice,roll_dice,True,True,2126,0,13,1.7363413339480758,0.0006703
+roll a 6 sided die and tell me the result,roll_dice,roll_dice,True,True,2133,0,13,1.4416215000674129,0.0006724
+complete a roll on a 4 sided dice,roll_dice,roll_dice,True,True,2131,0,13,1.5224238330265507,0.0006718
+is my milk safe to drink after being in the refrigerator for a week,food_last,food_last,True,True,2136,0,13,1.635743624996394,0.0006732999999999999
+is rice ok after 3 days in the refrigerator,food_last,food_last,True,True,2132,0,13,8.722134707961231,0.0006721
+how do i know if my milk is expired,food_last,food_last,True,True,2131,0,13,1.9346933749038726,0.0006718
+how long until my milk expires,food_last,food_last,True,True,2128,0,13,1.4187268340028822,0.0006709
+how long do i need to cook lasagne for,cook_time,cook_time,True,True,2132,0,8,1.1623499169945717,0.0006596
+how long do i need to cook tuna casserole for,cook_time,cook_time,True,True,2132,0,8,1.0976410419680178,0.0006596
+how long should i cook steak for,cook_time,cook_time,True,True,2129,0,13,1.459070208016783,0.0006711999999999999
+what time should i leave this in the oven,cook_time,cook_time,True,True,2131,0,13,1.0463370840298012,0.0006718
+i need to be reminded,reminder_update,reminder,True,True,2127,0,6,1.3114894159371033,0.0006531
+i just put steaks on the grill remind me to check them at the right time,reminder_update,reminder,True,True,2138,0,11,1.7867494999663904,0.0006688999999999999
+don't let me forget to check the steak,reminder_update,reminder,True,True,2132,0,6,1.9540617079474032,0.0006546
+set a reminder to check the steak,reminder_update,reminder,True,True,2129,0,11,2.586171666975133,0.0006661999999999999
+i want to report a stolen card,report_lost_card,report_lost_card,True,True,2129,0,15,1.3768348750891164,0.0006762
+how do i report a stolen card,report_lost_card,report_lost_card,True,True,2129,0,15,1.5302642079768702,0.0006762
+i lost a card and i need to report it,report_lost_card,report_lost_card,True,True,2132,0,10,1.2618631250225008,0.0006646
+what is the route to take to report a lost card,report_lost_card,report_lost_card,True,True,2133,0,15,1.5196867919294164,0.0006774
+is it ok to use ketchup instead of mustard,ingredient_substitution,ingredient_substitution,True,True,2131,0,13,1.1672037499956787,0.0006718
+is it allow to switch apples to grapes,ingredient_substitution,ingredient_substitution,True,True,2130,0,13,1.3582050829427317,0.0006715
+can i modify the apples for grapes,ingredient_substitution,ingredient_substitution,True,True,2129,0,13,1.5584032500628382,0.0006711999999999999
+would i be able to swap apples for grapes,ingredient_substitution,ingredient_substitution,True,True,2131,0,8,1.0944840419106185,0.0006592999999999999
+i want to call up jan,make_call,make_call,True,True,2128,0,8,1.3394244159571826,0.0006584
+call aj now,make_call,make_call,True,True,2125,0,8,1.0601630420424044,0.0006575
+can you call michelle on the home phone,make_call,make_call,True,True,2131,0,8,1.3829707920085639,0.0006592999999999999
+"siri, call jacob",make_call,make_call,True,True,2128,0,8,1.2939183328999206,0.0006584
+set me an alarm right now,alarm,alarm,True,True,2128,0,11,1.202794042066671,0.0006659
+can you set up alarms for one in the afternoon and ten at night,alarm,alarm,True,True,2136,0,6,1.189073667046614,0.0006558
+did i put cutting the grass on my todo list,todo_list,todo_list,True,True,2132,0,8,1.1829166659153998,0.0006596
+do i have anything on my todo list,todo_list,todo_list,True,True,2130,0,8,1.3556683330098167,0.000659
+change your accent now,change_accent,change_accent,True,True,2126,0,8,1.3164741250220686,0.0006577999999999999
+change to a new accent please,change_accent,change_accent,True,True,2128,0,13,1.1212222499307245,0.0006709
+i need to change my account,change_accent,oos,True,True,2128,0,15,1.4296903329668567,0.0006759
+i need to switch accounts,change_accent,oos,True,True,2127,0,10,1.2014280840521678,0.0006631
+where can i get the form for my taxes,w2,taxes,True,True,2131,0,11,1.384893749956973,0.0006667999999999999
+what day do i have to pay my leasing office bill,bill_due,bill_due,True,True,2133,0,8,1.3522702920017764,0.0006598999999999999
+what is the calorie content of lays chips,calories,calories,True,True,2130,0,6,1.3852152089821175,0.000654
+do you know the calorie content of a strip of bacon,calories,calories,True,True,2133,0,6,1.2285249170381576,0.0006548999999999999
+how many calories does two bananas have,calories,calories,True,True,2129,0,11,1.440530625055544,0.0006661999999999999
+how many calories are in a ghirardelli sea salt caramel candy,calories,calories,True,True,2136,0,6,1.0585645419778302,0.0006558
+how many calories are in powdered donuts,calories,calories,True,True,2129,0,11,1.1166650829836726,0.0006661999999999999
+my card was damaged by bleach,damaged_card,damaged_card,True,True,2128,0,8,1.3308718330226839,0.0006584
+i broke my card trying to do a magic trick,damaged_card,damaged_card,True,True,2132,0,8,1.2380757910432294,0.0006596
+i ruined my card when it got washed,damaged_card,damaged_card,True,True,2130,0,13,1.156388625036925,0.0006715
+how good are the review for yardhouse,restaurant_reviews,restaurant_reviews,True,True,2130,0,13,1.4252199999755248,0.0006715
+how is sushi at jiro,restaurant_reviews,restaurant_reviews,True,True,2128,0,8,1.111632417072542,0.0006584
+tell me chase's routing number,routing,routing,True,True,2129,0,11,1.076519082998857,0.0006661999999999999
+help me find the chase routing number,routing,routing,True,True,2129,0,6,1.1933834169758484,0.0006536999999999999
+what would wells fargo use as routing,routing,routing,True,True,2130,0,6,1.2745040419977158,0.000654
+what type of pet is in your home,do_you_have_pets,do_you_have_pets,True,True,2130,0,17,1.5048664999194443,0.0006815
+do you have any animals,do_you_have_pets,do_you_have_pets,True,True,2127,0,12,1.1932384170359,0.0006681
+what type of animal is living in your home,do_you_have_pets,oos,True,True,2131,0,15,1.402904957998544,0.0006768
+what creatures do you keep for love,do_you_have_pets,oos,True,True,2129,0,15,1.1401326659834012,0.0006762
+"which type of pet would you rather possess, a cat or a dog",do_you_have_pets,do_you_have_pets,True,True,2136,0,17,1.4089153750101104,0.0006833
+how do i set up a meeting,schedule_meeting,schedule_meeting,True,True,2129,0,13,1.3104973749723285,0.0006711999999999999
+how can i set up a meeting,schedule_meeting,schedule_meeting,True,True,2129,0,13,1.300690499949269,0.0006711999999999999
+i want you to set a meeting with john at 5 pm,schedule_meeting,schedule_meeting,True,True,2135,0,8,1.0956908750813454,0.0006605
+please set a meeting with nancy at 4 pm,schedule_meeting,schedule_meeting,True,True,2133,0,8,1.344356416957453,0.0006598999999999999
+please schedule a meeting room for 9am on friday,schedule_meeting,schedule_meeting,True,True,2133,0,8,1.2138588330708444,0.0006598999999999999
+what is the proper fuel type for my car,gas_type,gas_type,True,True,2131,0,8,1.7454384999582544,0.0006592999999999999
+could you tell me the fuel type for my car,gas_type,gas_type,True,True,2132,0,8,1.0884186660405248,0.0006596
+i need gas so what should i get,gas_type,gas_type,True,True,2130,0,13,1.1228652079589665,0.0006715
+what sort of electrical plug do they use in mainland europe,plug_type,plug_type,True,True,2133,0,13,1.1935194589896128,0.0006724
+what plugs are in england,plug_type,plug_type,True,True,2127,0,13,1.128142041969113,0.0006706
+which plugs does england use,plug_type,plug_type,True,True,2127,0,13,1.3096750829136,0.0006706
+when would be a wise time to replace my tires,tire_change,tire_change,True,True,2132,0,13,1.1526019999291748,0.0006721
+figure out for me when i ought to change my tires next,tire_change,tire_change,True,True,2134,0,13,1.1740573749411851,0.0006726999999999999
+when is it time for a tire change,tire_change,tire_change,True,True,2130,0,13,1.2426459999987856,0.0006715
+when should my car's tires be changed,tire_change,tire_change,True,True,2131,0,13,1.3928349170600995,0.0006718
+when should i change my tires,tire_change,tire_change,True,True,2128,0,13,4.924892749986611,0.0006709
+how much is 100 dollars in euros,exchange_rate,exchange_rate,True,True,2132,0,8,2.0580992499599233,0.0006596
+what's the exchange rate between country a and country b,exchange_rate,exchange_rate,True,True,2134,0,8,2.492394124972634,0.0006601999999999999
+how much is 1 dollar worth in country b's money,exchange_rate,exchange_rate,True,True,2135,0,8,3.0560654579894617,0.0006605
+do we get monday off as a holiday,next_holiday,next_holiday,True,True,2130,0,8,2.4444763750070706,0.000659
+i want your volume decreased please,change_volume,change_volume,True,True,2128,0,13,1.7440676670521498,0.0006709
+i want the volume at level 4,change_volume,change_volume,True,True,2130,0,8,1.463034208980389,0.000659
+would you please increase the speaker volume,change_volume,change_volume,True,True,2129,0,8,2.823849375010468,0.0006586999999999999
+who are you employed by,who_do_you_work_for,who_do_you_work_for,True,True,2127,0,14,5.2356782499700785,0.0006731
+do you work for another individual,who_do_you_work_for,who_do_you_work_for,True,True,2128,0,19,1.7599387919763103,0.0006859
+who is your boss by the way,who_do_you_work_for,who_do_you_work_for,True,True,2129,0,14,1.3532973749097437,0.0006737
+i want the name of your boss,who_do_you_work_for,who_do_you_work_for,True,True,2129,0,19,1.1917437500087544,0.0006862
+specify who your boss is,who_do_you_work_for,who_do_you_work_for,True,True,2127,0,19,1.443500707973726,0.0006856000000000001
+provide me the name of your boss,who_do_you_work_for,who_do_you_work_for,True,True,2129,0,14,1.421175125055015,0.0006737
+how high is my spending limit on my wells fargo card,credit_limit,credit_limit,True,True,2134,0,13,1.2596178749809042,0.0006726999999999999
+how long is the wait at chipotle,how_busy,how_busy,True,True,2130,0,13,1.1767933330265805,0.0006715
+can i make reservations at spago in beverly hills,accept_reservations,restaurant_reservation,True,True,2134,0,8,1.2088418749626726,0.0006601999999999999
+is grub burger taking reservations,accept_reservations,accept_reservations,True,True,2127,0,14,1.3137272079475224,0.0006731
+does the bellagio have any reservations,accept_reservations,accept_reservations,True,True,2129,0,14,1.5078502079704776,0.0006737
+was my order shipped here,order_status,order_status,True,True,2127,0,8,1.5031075000297278,0.0006581
+what is the status of my purchase,order_status,order_status,True,True,2129,0,8,1.1992564999964088,0.0006586999999999999
+has my purchase been delivered yet,order_status,order_status,True,True,2128,0,13,1.5782019579783082,0.0006709
+i ordered new light bulbs online when will they get here,order_status,order_status,True,True,2133,0,8,1.3787405838957056,0.0006598999999999999
+"i forgot my pin number for my credit union bank account, can you help",pin_change,pin_change,True,True,2137,0,13,1.2386072499211878,0.0006736
+switch the pin on my visa account,pin_change,pin_change,True,True,2129,0,13,1.3373182920040563,0.0006711999999999999
+this was a nice chat,goodbye,goodbye,True,True,2127,0,7,1.4117310419678688,0.0006556
+"this was a nice chat, goodbye",goodbye,goodbye,True,True,2129,0,7,1.4454355410998687,0.0006561999999999999
+this was a nice conversation,goodbye,goodbye,True,True,2127,0,12,1.3421797920018435,0.0006681
+my account looks to be blocked and i have no idea why,account_blocked,account_blocked,True,True,2134,0,8,1.3050442090025172,0.0006601999999999999
+it looks like my account is blocked but i have no clue why,account_blocked,account_blocked,True,True,2135,0,8,1.3070707080187276,0.0006605
+my account appears to be blocked but i have no idea why that could be,account_blocked,account_blocked,True,True,2137,0,13,1.3440381250111386,0.0006736
+great western bank's login screen tells me i'm locked out but not why,account_blocked,account_blocked,True,True,2139,0,8,1.158880625036545,0.0006617
+can you check and see if my account's blocked,account_blocked,account_blocked,True,True,2133,0,8,1.6729506669798866,0.0006598999999999999
+whats this song,what_song,what_song,True,True,2125,0,13,1.5174945830367506,0.00067
+what music is this,what_song,what_song,True,True,2126,0,8,1.2688058749772608,0.0006577999999999999
+what is that song called,what_song,what_song,True,True,2127,0,13,24.432800790993497,0.0006706
+name this song,what_song,what_song,True,True,2125,0,8,13.061176583985798,0.0006575
+what's that song that is playing now,what_song,what_song,True,True,2131,0,13,26.199426500010304,0.0006718
+does my new bank card have any international transaction fees,international_fees,international_fees,True,True,2132,0,8,18.228692165925168,0.0006596
+i need to know if my capital one credit card have international transaction fees,international_fees,international_fees,True,True,2136,0,13,5.96574754093308,0.0006732999999999999
+"while in tulsa, if i use my card, would i be charged more",international_fees,international_fees,True,True,2138,0,13,4.190141833969392,0.0006739
+using my card in tulsa won't cause me to be charged extra will it,international_fees,international_fees,True,True,2139,0,13,1.2884365000063553,0.0006741999999999999
+when did i last get my car serviced,last_maintenance,last_maintenance,True,True,2130,0,8,1.7610444169258699,0.000659
+what was the date of my last car service,last_maintenance,last_maintenance,True,True,2131,0,13,1.745837082969956,0.0006718
+could you inform me of when i last got my car checked,last_maintenance,last_maintenance,True,True,2134,0,13,1.3394949999637902,0.0006726999999999999
+how long since i swapped oil,last_maintenance,last_maintenance,True,True,2128,0,13,3.13556633295957,0.0006709
+do i have any meetings today between 9 and 10:30,meeting_schedule,calendar,True,True,2138,0,6,2.717539708944969,0.0006564
+do i have any meetings coming up with dan,meeting_schedule,meeting_schedule,True,True,2131,0,13,2.384485957911238,0.0006718
+"what is my schedule like today, any meetings with dan",meeting_schedule,meeting_schedule,True,True,2133,0,8,1.9645827499916777,0.0006598999999999999
+i need a list of ingredients required to make lamb stew,ingredients_list,ingredients_list,True,True,2133,0,13,2.2830699159530923,0.0006724
+what ingredients do i need to make raisin bread,ingredients_list,ingredients_list,True,True,2131,0,13,2.046409917064011,0.0006718
+what ingredients do i need for shrimp scampi,ingredients_list,ingredients_list,True,True,2131,0,13,2.0786232089158148,0.0006718
+i need what ingredients for meatloaf,ingredients_list,ingredients_list,True,True,2129,0,13,2.352530292002484,0.0006711999999999999
+"someone is charging my card for playstations, and it's not me! what do i do!",report_fraud,report_fraud,True,True,2143,0,13,2.0675328749930486,0.0006753999999999999
+i want to report fraudulent activity on my visa,report_fraud,report_fraud,True,True,2131,0,8,2.0624929160112515,0.0006592999999999999
+can you tell me the number of ounces in a quart,measurement_conversion,measurement_conversion,True,True,2133,0,13,2.1891081660287455,0.0006724
+i need kilograms to milligrams,measurement_conversion,measurement_conversion,True,True,2127,0,8,3.2186436670599505,0.0006581
+how many ounces in a cup,measurement_conversion,measurement_conversion,True,True,2128,0,13,1.7664442079840228,0.0006709
+i need you to turn the tv on now,smart_home,smart_home,True,True,2131,0,8,1.3296309999423102,0.0006592999999999999
+will you please turn the tv on,smart_home,smart_home,True,True,2129,0,13,1.1539261660072953,0.0006711999999999999
+please turn on the hallway lights,smart_home,smart_home,True,True,2128,0,13,1.6946042500203475,0.0006709
+could you book me a hotel in afghanistan at the zoo for the 10th to the 15th,book_hotel,book_hotel,True,True,2147,0,8,1.2895648749545217,0.0006641
+i need a hotel with good reviews in baltimore,book_hotel,book_hotel,True,True,2132,0,8,1.2995553329819813,0.0006596
+help me book a place to stay from may 2 to may 4 in tampa,book_hotel,book_hotel,True,True,2139,0,13,1.1936627499526367,0.0006741999999999999
+i want to book a hotel in tampa from may 2 to may 4,book_hotel,book_hotel,True,True,2138,0,8,1.322098416974768,0.0006614
+what are my coordinates,current_location,current_location,True,True,2126,0,8,1.7234255410730839,0.0006577999999999999
+where am i on gps,current_location,current_location,True,True,2127,0,13,1.4651130000129342,0.0006706
+what's the weather like,weather,weather,True,True,2128,0,11,1.2710334589937702,0.0006659
+what will be the weather tomorrow,weather,weather,True,True,2128,0,6,1.112237458000891,0.0006533999999999999
+what's the humidity today,weather,weather,True,True,2128,0,11,1.1565618750173599,0.0006659
+can you tell me what my federal tax burden is,taxes,taxes,True,True,2132,0,6,1.1158234169706702,0.0006546
+what amount do i owe in taxes,taxes,taxes,True,True,2129,0,6,1.2186848749406636,0.0006536999999999999
+how little can i pay towards my car insurance,min_payment,oos,True,True,2131,0,15,1.3070456249406561,0.0006768
+is there a minimum amount accepted,min_payment,oos,True,True,2128,0,10,2.1100419170688838,0.0006634
+could you tell me my bill's minimum payment,min_payment,min_payment,True,True,2132,0,8,1.86491645895876,0.0006596
+what's the least amount i can pay on this bill,min_payment,min_payment,True,True,2134,0,8,2.6465691659832373,0.0006601999999999999
+what is the minimum payment due on my visa,min_payment,min_payment,True,True,2131,0,13,1.2393011670792475,0.0006718
+use your whisper voice,whisper_mode,whisper_mode,True,True,2126,0,9,1.1391189580317587,0.0006603
+whisper to me,whisper_mode,whisper_mode,True,True,2125,0,9,1.6123197079868987,0.00066
+make a switch to whisper mode,whisper_mode,whisper_mode,True,True,2128,0,9,2.2434262920869514,0.0006609
+whisper please,whisper_mode,whisper_mode,True,True,2124,0,9,1.8534725829958916,0.0006596999999999999
+go into whisper mode,whisper_mode,whisper_mode,True,True,2126,0,9,1.9287756669800729,0.0006603
+please use whisper mode,whisper_mode,whisper_mode,True,True,2126,0,14,2.7032557079801336,0.0006728
+please abort the current process,cancel,cancel,True,True,2127,0,11,1.6959561669500545,0.0006656
+command cancel,cancel,cancel,True,True,2124,0,6,3.204739583074115,0.0006521999999999999
+please stop it,cancel,cancel,True,True,2125,0,6,1.9208992080530152,0.0006525
+please don't talk any further,cancel,oos,True,True,2129,0,15,1.8235470419749618,0.0006762
+i want to go to china but am not sure if i need an international visa,international_visa,international_visa,True,True,2138,0,13,1.2221378330141306,0.0006739
+do i have to get a shot for travel to taiwan,vaccines,vaccines,True,True,2133,0,12,1.427075209096074,0.0006699
+how many days of vacation do i have saved,pto_balance,pto_balance,True,True,2131,0,13,1.3470074590295553,0.0006718
+whats the number of pto days i have to my availability,pto_balance,pto_balance,True,True,2134,0,13,1.2477894590701908,0.0006726999999999999
+how many pto days are in my possesion,pto_balance,pto_balance,True,True,2133,0,8,1.447450999985449,0.0006598999999999999
+what is the amount of time i can request off in the coming year,pto_balance,pto_balance,True,True,2136,0,8,1.232769540976733,0.0006607999999999999
+tell me how to spell the word dessert,spelling,spelling,True,True,2130,0,12,1.4706720829708502,0.000669
+how do you spell umbrella,spelling,spelling,True,True,2127,0,7,1.3972414589952677,0.0006556
+please spell doctor,spelling,spelling,True,True,2125,0,7,1.602247791015543,0.000655
+hows are ya,greeting,greeting,True,True,2126,0,11,1.6398253330262378,0.0006653
+how is it going my friend,greeting,greeting,True,True,2128,0,6,3.0458135409280658,0.0006533999999999999
+i want a clean bootup to factory settings,reset_settings,reset_settings,True,True,2131,0,8,1.2882990840589628,0.0006592999999999999
+go back to default settings,reset_settings,reset_settings,True,True,2127,0,8,1.5049149580299854,0.0006581
+what is your given name,what_is_your_name,what_is_your_name,True,True,2127,0,17,1.5378260409925133,0.0006806000000000001
+can i ask your name,what_is_your_name,what_is_your_name,True,True,2127,0,12,1.9119211659999564,0.0006681
+do you mind if i ask your name,what_is_your_name,what_is_your_name,True,True,2130,0,12,1.5157459999900311,0.000669
+how do i set up direct deposit for my old national account,direct_deposit,direct_deposit,True,True,2134,0,8,1.6800813750596717,0.0006601999999999999
+what kind of interest can i expect with my chase account,interest_rate,interest_rate,True,True,2133,0,8,1.354459791094996,0.0006598999999999999
+what's my interest rate with my capital one account,interest_rate,interest_rate,True,True,2133,0,8,1.265697875060141,0.0006598999999999999
+what is walker bank paying me in interest on my account,interest_rate,interest_rate,True,True,2133,0,13,1.352574500022456,0.0006724
+can i make a change to my credit limit,credit_limit_change,credit_limit_change,True,True,2131,0,15,1.8238887910265476,0.0006768
+how do i increse my credit limit,credit_limit_change,credit_limit_change,True,True,2130,0,15,1.6391012920066714,0.0006765
+can you help me change my credit limit,credit_limit_change,credit_limit_change,True,False,2130,0,15,3.079353000037372,0.0006765
+increase my credit limit,credit_limit_change,credit_limit_change,True,False,2126,0,10,1.2462677089497447,0.0006628
+do you have hobbies,what_are_your_hobbies,what_are_your_hobbies,True,False,2126,0,13,1.2330125420121476,0.0006703
+what do you like to do in your free time,what_are_your_hobbies,what_are_your_hobbies,True,False,2132,0,13,1.4438556249951944,0.0006721
+what hobbies do you have,what_are_your_hobbies,what_are_your_hobbies,True,False,2127,0,13,1.2761217498918995,0.0006706
+what do you do with your free time,what_are_your_hobbies,what_are_your_hobbies,True,False,2130,0,13,1.1184285000199452,0.0006715
+i want to find a flight for under 700 on the 4th from denver international to new york international,book_flight,book_flight,True,False,2147,0,8,1.1654462500009686,0.0006641
+did i remember to add milk to my shopping list,shopping_list,shopping_list,True,False,2132,0,8,1.4111745830159634,0.0006596
+what do i need to buy,shopping_list,shopping_list,True,False,2128,0,8,1.0736157079227269,0.0006584
+did i remember to put eggs on my shopping list,shopping_list,shopping_list,True,False,2132,0,8,1.0698428750038147,0.0006596
+"message carl, you suck",text,text,True,False,2128,0,6,1.1675321250222623,0.0006533999999999999
+inform carl that he is an awful human being,text,text,True,False,2132,0,11,1.3574184160679579,0.0006671
+i want a text sent to bob saying i will be late,text,text,True,False,2134,0,6,1.089838291052729,0.0006551999999999999
+write a text to kim saying no,text,text,True,False,2129,0,11,1.1783419999992475,0.0006661999999999999
+what do my bills look like for amazon and netflix,bill_balance,bill_balance,True,False,2133,0,8,1.1663956250995398,0.0006598999999999999
+show my gps location to brittany,share_location,share_location,True,False,2129,0,8,1.115771499928087,0.0006586999999999999
+share my gps with tom,share_location,share_location,True,False,2127,0,8,1.0955109170172364,0.0006581
+what can i buy with credit card points,redeem_rewards,redeem_rewards,True,False,2130,0,9,1.1397783340653405,0.0006615
+i would like to find out how to cash out cred card points,redeem_rewards,redeem_rewards,True,False,2135,0,14,1.2082625409821048,0.0006755
+i want to hear satisfaction,play_music,play_music,True,False,2127,0,13,1.1124394580256194,0.0006706
+can you play the song that sounds like thun thun thun,play_music,play_music,True,False,2136,0,13,1.190577125060372,0.0006732999999999999
+"can you play the song amazing grace and it goes like this, amazing grace how sweet the sound",play_music,play_music,True,False,2141,0,13,1.161033874959685,0.0006747999999999999
+can you play music by the beatles,play_music,play_music,True,False,2130,0,13,1.1924947500228882,0.0006715
+do you have any of the beatles music,play_music,play_music,True,False,2131,0,13,1.1663153750123456,0.0006718
+please play me the song that starts out with doo doo doo,play_music,play_music,True,False,2134,0,13,1.5125816660001874,0.0006726999999999999
+can you play the song that goes doo doo doo,play_music,play_music,True,False,2132,0,8,1.1003227909095585,0.0006596
+"you can remove the play date from my calendar for feb 18, 2019",calendar_update,calendar_update,True,False,2142,0,13,1.2134202079614624,0.0006751
+add to my friday calendar a doctor's appointment,calendar_update,calendar_update,True,False,2132,0,8,1.7085958749521524,0.0006596
+"can you remove this event from my calendar, please",calendar_update,calendar_update,True,False,2132,0,8,1.4130149580305442,0.0006596
+are you a robot,are_you_a_bot,are_you_a_bot,True,False,2126,0,17,1.1921856249682605,0.0006803
+what is the gas level in my gas tank,gas,gas,True,False,2131,0,11,1.1882277500117198,0.0006667999999999999
+do i have enough gas to take me home,gas,gas,True,False,2131,0,11,1.1589008750161156,0.0006667999999999999
+how much gas do i have,gas,gas,True,False,2128,0,6,1.1631586250150576,0.0006533999999999999
+how much gas do i have left,gas,gas,True,False,2129,0,11,1.0286114159971476,0.0006661999999999999
+what is the date that my visa card expires,expiration_date,expiration_date,True,False,2131,0,13,1.1758891659555957,0.0006718
+when will my visa expire,expiration_date,expiration_date,True,False,2127,0,13,1.2814530410105363,0.0006706
+what is my expiration data for my card,expiration_date,expiration_date,True,False,2130,0,13,1.1881431250367314,0.0006715
+when will my card go rotten,expiration_date,oos,True,False,2128,0,10,1.3069523749873042,0.0006634
+add song to my hype playlist,update_playlist,update_playlist,True,False,2128,0,8,1.0864929580129683,0.0006584
+please add this song to my morning job playlist,update_playlist,update_playlist,True,False,2131,0,13,1.4931229579960927,0.0006718
+i'd like to augment my workout playlist with this tune,update_playlist,update_playlist,True,False,2134,0,13,1.2639197499956936,0.0006726999999999999
+please add what i listen to to my lolla playlist,update_playlist,update_playlist,True,False,2133,0,13,1.122919874964282,0.0006724
+i need to cancel my reservation for new york to xai varanda,cancel_reservation,cancel_reservation,True,False,2136,0,8,1.2173357920255512,0.0006607999999999999
+i no longer want my reservation for 5 at the loft cancel it please,cancel_reservation,cancel_reservation,True,False,2137,0,8,1.101866333046928,0.0006611
+carla doesn't want her olive garden reservation anymore,cancel_reservation,cancel_reservation,True,False,2133,0,13,1.2220927079906687,0.0006724
+i'm in the mood for a joke,tell_joke,tell_joke,True,False,2131,0,8,1.0593359590275213,0.0006592999999999999
+could you tell me a good joke,tell_joke,tell_joke,True,False,2129,0,8,1.099057084065862,0.0006586999999999999
+do you know any good jokes you would like to share,tell_joke,tell_joke,True,False,2133,0,8,1.2663245829753578,0.0006598999999999999
+i want to hear jokes about toddlers,tell_joke,tell_joke,True,False,2129,0,13,1.1168589169392362,0.0006711999999999999
+i want to call you maggie,change_ai_name,change_ai_name,True,False,2129,0,10,1.1446051250677556,0.0006636999999999999
+i want your name to be gerry,change_ai_name,change_ai_name,True,False,2130,0,10,1.835887209046632,0.000664
+make your name jake,change_ai_name,change_ai_name,True,False,2127,0,10,1.4275939170038328,0.0006631
+change your name to fred,change_ai_name,change_ai_name,True,False,2127,0,10,1.0667829159647226,0.0006631
+what day were you born,how_old_are_you,how_old_are_you,True,False,2127,0,12,1.1746968330116943,0.0006681
+what is the year that were you born,how_old_are_you,how_old_are_you,True,False,2130,0,17,1.3177882919553667,0.0006815
+help me book a car rental in chicago for april 1st to 3rd get me an suv if possible,car_rental,car_rental,True,False,2145,0,8,1.729764832998626,0.0006635
+could i get assistance booking a car rental in las vegas,car_rental,car_rental,True,False,2133,0,8,1.601979250088334,0.0006598999999999999
+how do i do a jump start on my car,jump_start,jump_start,True,False,2132,0,8,2.5337928750086576,0.0006596
+can you give me a chinese meal suggestion,meal_suggestion,meal_suggestion,True,False,2130,0,13,4.102679959032685,0.0006715
+i am bored and need new dinner recommendations,meal_suggestion,restaurant_suggestion,True,False,2130,0,13,6.303670333931223,0.0006715
+what would you suggest having for dinner,meal_suggestion,meal_suggestion,True,False,2129,0,13,4.587504209019244,0.0006711999999999999
+what kind of meal should i eat from thailand,meal_suggestion,meal_suggestion,True,False,2131,0,13,5.976286209071986,0.0006718
+i would like to learn to make cookies,recipe,recipe,True,False,2130,0,11,6.019783457973972,0.0006665
+pull up ramen recipes please,recipe,recipe,True,False,2127,0,11,7.806492375093512,0.0006656
+do you know my work income,income,income,True,False,2128,0,11,6.13967025000602,0.0006659
+"i ran out of bread, order more",order,order,True,False,2130,0,11,8.337217082967982,0.0006665
+order dog food from walmart,order,order,True,False,2127,0,6,8.460718084010296,0.0006531
+order more paper towels from amazon,order,order,True,False,2128,0,6,4.995284333010204,0.0006533999999999999
+i want to buy an iphone7,order,order,True,False,2129,0,11,4.139852082938887,0.0006661999999999999
+how does the traffic look on my way to work right now,traffic,traffic,True,False,2134,0,6,9.055439915973693,0.0006551999999999999
+"is there any traffic on the road i take home from work right now, rt 40",traffic,traffic,True,False,2141,0,11,6.669836417073384,0.0006697999999999999
+how's the traffic to work,traffic,traffic,True,False,2129,0,6,9.404741416918114,0.0006536999999999999
+can you give me a traffic update for a trip to the grocery store,traffic,traffic,True,False,2136,0,6,5.587036040960811,0.0006558
+i just used my final check order more,order_checks,order_checks,True,False,2130,0,13,7.025277541950345,0.0006715
+how can i order checks for my savings account,order_checks,order_checks,True,False,2131,0,8,6.331047332962044,0.0006592999999999999
+was there a problem with my card yesterday,card_declined,card_declined,True,False,2130,0,9,3.91974454105366,0.0006615
+"my card was rejected at the zoo, could you tell me why",card_declined,card_declined,True,False,2135,0,14,4.426147209014744,0.0006755
+i was trying to buy a chainsaw at the tractor store and they said my card was declined,card_declined,card_declined,True,False,2140,0,9,5.070785166928545,0.0006645
+who has the best record in the nfl,oos,oos,True,False,2131,0,15,8.661938749952242,0.0006768
+does hypnosis work to break bad habits,oos,oos,True,False,2129,0,10,5.777643083943985,0.0006636999999999999
+what's the definition of nuclear engineering,oos,definition,True,False,2130,0,6,8.460098500014283,0.000654
+what game has the best odds at a casino,oos,oos,True,False,2131,0,15,7.994455833104439,0.0006768
+how does cybersecurity work,oos,oos,True,False,2126,0,15,4.685355124995112,0.0006753
+how do you learn how to play electric violin,oos,oos,True,False,2131,0,15,3.6814283330459148,0.0006768
+what site publishes the most fake news,oos,oos,True,False,2129,0,15,6.948933082981966,0.0006762

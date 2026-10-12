@@ -31,3 +31,4 @@ One line per decision, with the reason.
 - **No `python-dotenv`**: a 6-line `load_env()` reads `.env`, avoiding a new dependency.
 - **Client-side pacing at `GEMINI_RPM` requests per minute (default 15)**: the free tier rejects more than 15 requests per minute for this model; pacing avoids the errors instead of retrying through them. Latency is timed from when the request is sent, so the wait is not counted.
 - **Stop immediately when the daily quota is exhausted**: retrying a per-day 429 is pointless; the cache keeps finished answers, so the run resumes where it stopped after the reset.
+- **Gemini is the default provider and produced all reported LLM numbers; Groq stays as an option**: the Groq key was never added, while the Gemini cache already held 915 answers and its quota had reset; mixing providers between validation and test would make the numbers incomparable.
