@@ -64,7 +64,7 @@
   <p class="sub">A fine-tuned DistilBERT that sorts a message into one of 150 intents, or says it is out of scope. It runs in your browser, so nothing you type leaves this page.</p>
 
   <div class="card">
-    <textarea id="text" placeholder="Type a message, e.g. 'i lost my credit card'">how much money is in my checking account</textarea>
+    <textarea id="text" maxlength="500" placeholder="Type a message, e.g. 'i lost my credit card'">how much money is in my checking account</textarea>
     <div class="row" id="examples"></div>
     <div class="row"><button id="go" disabled>Classify</button></div>
     <div id="status">Loading the model (about 70 MB, cached after the first visit) ...</div>
@@ -79,7 +79,7 @@
   <div class="stats" id="stats"></div>
 
   <footer>
-    Trained on CLINC150. Scores are from the held-out test set (5,500 queries) with the full-precision model; this page runs an int8 copy.
+    Trained on CLINC150. Scores are from the held-out test set (5,500 queries), full-precision model with the same threshold; this page runs an int8 copy.
     Code, the TF-IDF baseline and the LLM comparison: <a href="https://github.com/Prathameshh-Patil/intentbench">github.com/Prathameshh-Patil/intentbench</a>.
   </footer>
 </main>

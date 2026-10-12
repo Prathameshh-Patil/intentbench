@@ -131,7 +131,7 @@ def main() -> None:
         "threshold": default_threshold(),
         "max_length": MAX_LENGTH,
         "int8_agreement": agreement,
-        "test": results["results"]["distilbert"]["test"],
+        "test": results["results"]["distilbert_threshold"]["test"],  # the served configuration
     }
     (OUT / "meta.json").write_text(json.dumps(meta, indent=2))
     size_mb = int8.stat().st_size / 1e6
