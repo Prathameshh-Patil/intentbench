@@ -1,0 +1,14 @@
+{
+  "threshold": 0.69,
+  "max_length": 64,
+  "int8_agreement": 0.997093023255814,
+  "test": {
+    "accuracy": 0.918,
+    "in_scope_accuracy": 0.9493333333333334,
+    "macro_f1": 0.9385711186061267,
+    "oos_precision": 0.8710762331838565,
+    "oos_recall": 0.777,
+    "oos_f1": 0.821353065539112,
+    "n": 5500
+  }
+}
