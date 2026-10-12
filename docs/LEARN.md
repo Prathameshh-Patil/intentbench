@@ -140,3 +140,72 @@ Few-shot won on validation, so it is the variant that runs on test in Phase 5. N
 - Fine-tuning the LLM, or retrieving the most similar training examples per query (dynamic few-shot), would likely beat a fixed set of examples, at more cost and complexity.
 - A bigger model would probably do better on the subtle pairs, at roughly 10x the price.
 - Asking for a confidence score in the output: LLM self-reported confidences are poorly calibrated, so we didn't treat them as probabilities.
+
+## Phase 5: Final comparison
+
+**What we built.** `scripts/compare.py` loads every approach, runs the test set once, and writes `reports/results.json`, `reports/comparison.md` and `reports/test_predictions.csv` (every prediction, used by Phase 6). Try it with `python scripts/compare.py`. With the LLM cache present, it makes no API calls and takes about 2 minutes.
+
+**Design.**
+- TF-IDF and DistilBERT are scored on all 5,500 test queries *and* on the 400-row LLM sample. The LLM runs only on the sample, so there is always one table where all three see identical rows.
+- Only the few-shot LLM runs on test, because it won on validation. Choosing it on test would be tuning on test.
+- The served configuration (DistilBERT + threshold 0.69) gets its own row. The threshold was fixed on validation *before* this run, so its test number is honest too.
+- Latency is timed one request at a time on CPU (300 queries after 10 warm-up calls), because a user waits for one request, not a batch.
+
+**What surprised me.** Out-of-scope recall dropped from validation to test: DistilBERT went from 0.71 to 0.59, TF-IDF from 0.69 to 0.51. Test has many more, and more varied, out-of-scope queries (18% versus 3%), and many sit right next to a real domain. The threshold, chosen on the small validation set, still transferred well (0.78 on test). The second surprise: on out-of-scope, the cheapest-to-build approach (an LLM with an instruction) was the best detector (0.83) without any tuning, while it lost on in-scope accuracy.
+
+**Alternatives.** Running the LLM on all 5,500 rows would give tighter numbers, at about 11 days of free quota or about $3.70 at paid prices. Bootstrapped confidence intervals would show the uncertainty of the 400-row numbers directly; that's a good next step.
+
+## Phase 6: Error analysis
+
+**What we built.** `scripts/analyze.py` reads the saved test predictions (it never re-runs a model) and writes `reports/analysis.md` and `reports/figures/accuracy_by_length.png`. For each approach, the report has the 10 most confused pairs with real examples, accuracy by query length, the agreement pattern between approaches, examples where only one is right, and a recommendation.
+
+**Two failure patterns, in plain words.**
+1. *Near-domain out-of-scope.* "Add mary to my phone plan" is not one of the 150 intents, but it looks a lot like `sync_device`. The trained models only learned "which of these 151 is it", from very few out-of-scope examples, so they pick the closest. Their only way to say "none of these" is low confidence, and that's exactly what the threshold uses.
+2. *Sibling intents.* `insurance` vs `insurance_change`, `redeem_rewards` vs `rewards_balance`: same topic, different action. When the action is implicit ("help me find a new insurance plan"), all approaches can miss it.
+
+**Other findings.** TF-IDF gets worse on longer queries, while the LLM gets better (more context) and is weakest on 1-4 word queries like "ya". Some errors are label noise in the dataset (name-change requests labelled `pin_change`).
+
+**Alternatives.** A confusion-matrix heatmap with 151x151 cells is unreadable, so top-pair tables with real examples are more useful. Clustering the errors with embeddings would find patterns automatically, but reading 30 examples by hand found the same two.
+
+## Phase 7: Serve the chosen model
+
+**What we built.**
+- `scripts/choose_threshold.py`: picks the out-of-scope confidence threshold on validation and saves `reports/threshold.json` and `reports/figures/threshold_curve.png`.
+- `src/intentbench/serve/`: `schemas.py` (Pydantic request/response models), `model.py` (load the model once; `decide()` turns probabilities into an answer), `app.py` (FastAPI routes).
+- `Dockerfile` and `.dockerignore`: a CPU-only image of about 570 MB.
+- `tests/test_serve.py`: endpoint tests, including empty, blank and over-long input.
+
+**Try it.**
+
+    docker build -t intentbench-api .
+    docker run -p 8000:8000 intentbench-api
+    curl -X POST localhost:8000/classify -H 'Content-Type: application/json' -d '{"text": "what is my balance"}'
+
+Interactive docs are at http://localhost:8000/docs (FastAPI generates them from the Pydantic models).
+
+**FastAPI and Pydantic, in plain words.** FastAPI maps URLs to Python functions. Pydantic describes what a valid request looks like (`text` is a string of 1-500 characters, not just spaces). FastAPI checks every request against that description *before* our code runs, and answers `422 Unprocessable Entity` with a clear message if it doesn't fit. The same models describe the response, so `/docs` is always in sync with the code.
+
+**Loading the model once.** Loading DistilBERT takes about a second and 250 MB of memory. The `lifespan` hook loads it when the server starts and keeps it in `app.state`. Loading per request would add that second to every call. The tests pass in a tiny fake predictor through the same hook (`create_app(FakePredictor)`), which is why they run without the real model.
+
+**The threshold.** The model always produces 151 probabilities. If the highest is below the threshold, we answer `out_of_scope` even if the top class is an intent. The curve shows the trade-off: raising the threshold catches more out-of-scope queries (orange rises) but starts rejecting valid ones (blue falls). We took the highest out-of-scope recall that costs at most 1 point of in-scope accuracy: 0.69. On validation, out-of-scope recall goes from 0.71 to 0.83. An earlier rule (maximize the average of the two) chose 0.98, because the model is over-confident (Phase 3): its probabilities are near 1 even when wrong, so you need an extreme threshold to catch more, which also throws away many good answers.
+
+**Docker, in plain words.** A Docker *image* is a frozen file system with Python, the libraries, our code and the model. A *container* is a running copy of it. "Works on my machine" problems disappear, because every host runs the identical image. To keep it small, we install the CPU-only PyTorch build (the default one bundles GBs of GPU libraries), copy only the serving code and model, and keep everything else out via `.dockerignore`.
+
+**Alternatives.**
+- Serve TF-IDF instead: a 41 MB model and ~1 ms per request, but about 5 points lower macro-F1.
+- Export to ONNX and run with ONNX Runtime: a smaller image and faster CPU inference, but one more tool to explain.
+- Calibrate the probabilities first (temperature scaling) and then threshold: the threshold would then mean what it says, but that is an extra step on top of a working rule.
+
+## Phase 8: Demo and model card
+
+**What we built.**
+- `demo/app.py`: a Gradio page. Type a message and get each approach's answer, confidence and time taken in one table. The LLM is a checkbox, off by default, with a daily cap on new calls.
+- `docs/MODEL_CARD.md`: data, training settings, test metrics, intended use, and limits.
+
+**Try it.** `python demo/app.py`, then open http://localhost:7860.
+
+**Gradio, in plain words.** Gradio builds a web page from Python: you declare inputs (a textbox, a checkbox), outputs (a table) and the function that connects them. It serves the page and calls the function on each click, with no HTML or JavaScript.
+
+**Why the LLM is off by default.** Every LLM call costs money and uses quota, and a public page can be refreshed by anyone. Off by default, plus a cap on new calls per day, puts a hard limit on what a visitor can spend. Repeated queries come from the cache and are free.
+
+**Alternatives.** Streamlit is the other common choice. It's better for dashboards, but it reruns the whole script on every interaction. A custom page calling the FastAPI service would look nicer, but means writing a frontend.
