@@ -1,0 +1,73 @@
+{
+  "approach": "llm_zero_shot",
+  "split": "validation",
+  "sample_size": 500,
+  "model": "gemini-3.5-flash-lite",
+  "metrics": {
+    "accuracy": 0.926,
+    "in_scope_accuracy": 0.9269776876267748,
+    "macro_f1": 0.915890442890443,
+    "oos_precision": 0.3333333333333333,
+    "oos_recall": 0.8571428571428571,
+    "oos_f1": 0.48,
+    "n": 500
+  },
+  "other_approaches_on_same_sample": {
+    "tfidf_logreg": {
+      "accuracy": 0.904,
+      "in_scope_accuracy": 0.9066937119675457,
+      "macro_f1": 0.8993958633958634,
+      "oos_precision": 0.35714285714285715,
+      "oos_recall": 0.7142857142857143,
+      "oos_f1": 0.47619047619047616,
+      "n": 500
+    },
+    "distilbert": {
+      "accuracy": 0.962,
+      "in_scope_accuracy": 0.9634888438133874,
+      "macro_f1": 0.951912383912384,
+      "oos_precision": 0.75,
+      "oos_recall": 0.8571428571428571,
+      "oos_f1": 0.8,
+      "n": 500
+    }
+  },
+  "tokens": {
+    "input_mean": 702.1,
+    "output_mean": 11.0
+  },
+  "cost": {
+    "per_request_usd": 0.0002382,
+    "per_1000_requests_usd": 0.2382,
+    "price_input_per_m": 0.3,
+    "price_output_per_m": 2.5,
+    "price_source": "https://ai.google.dev/gemini-api/docs/pricing (gemini-3.5-flash-lite, Standard paid tier; page last updated 2026-10-07, checked 2026-10-08)"
+  },
+  "latency_uncached": {
+    "median_s": 1.501,
+    "p95_s": 6.001,
+    "n": 431
+  },
+  "latency_all_original_calls": {
+    "median_s": 1.528,
+    "p95_s": 8.029,
+    "n": 500
+  },
+  "invalid_after_retry": 0,
+  "few_shot_examples": null,
+  "system_prompt": "You classify short messages that users send to a virtual assistant into exactly one intent. The assistant handles banking, credit cards, travel, home, auto, work, kitchen and dining, utilities, and small talk.\n\nIntents:\naccept_reservations\naccount_blocked\nalarm\napplication_status\napr\nare_you_a_bot\nbalance\nbill_balance\nbill_due\nbook_flight\nbook_hotel\ncalculator\ncalendar\ncalendar_update\ncalories\ncancel\ncancel_reservation\ncar_rental\ncard_declined\ncarry_on\nchange_accent\nchange_ai_name\nchange_language\nchange_speed\nchange_user_name\nchange_volume\nconfirm_reservation\ncook_time\ncredit_limit\ncredit_limit_change\ncredit_score\ncurrent_location\ndamaged_card\ndate\ndefinition\ndirect_deposit\ndirections\ndistance\ndo_you_have_pets\nexchange_rate\nexpiration_date\nfind_phone\nflight_status\nflip_coin\nfood_last\nfreeze_account\nfun_fact\ngas\ngas_type\ngoodbye\ngreeting\nhow_busy\nhow_old_are_you\nimprove_credit_score\nincome\ningredient_substitution\ningredients_list\ninsurance\ninsurance_change\ninterest_rate\ninternational_fees\ninternational_visa\njump_start\nlast_maintenance\nlost_luggage\nmake_call\nmaybe\nmeal_suggestion\nmeaning_of_life\nmeasurement_conversion\nmeeting_schedule\nmin_payment\nmpg\nnew_card\nnext_holiday\nnext_song\nno\nnutrition_info\noil_change_how\noil_change_when\norder\norder_checks\norder_status\npay_bill\npayday\npin_change\nplay_music\nplug_type\npto_balance\npto_request\npto_request_status\npto_used\nrecipe\nredeem_rewards\nreminder\nreminder_update\nrepeat\nreplacement_card_duration\nreport_fraud\nreport_lost_card\nreset_settings\nrestaurant_reservation\nrestaurant_reviews\nrestaurant_suggestion\nrewards_balance\nroll_dice\nrollover_401k\nrouting\nschedule_maintenance\nschedule_meeting\nshare_location\nshopping_list\nshopping_list_update\nsmart_home\nspelling\nspending_history\nsync_device\ntaxes\ntell_joke\ntext\nthank_you\ntime\ntimer\ntimezone\ntire_change\ntire_pressure\ntodo_list\ntodo_list_update\ntraffic\ntransactions\ntransfer\ntranslate\ntravel_alert\ntravel_notification\ntravel_suggestion\nuber\nupdate_playlist\nuser_name\nvaccines\nw2\nweather\nwhat_are_your_hobbies\nwhat_can_i_ask_you\nwhat_is_your_name\nwhat_song\nwhere_are_you_from\nwhisper_mode\nwho_do_you_work_for\nwho_made_you\nyes\n\nIf the message does not clearly match one of these intents, answer out_of_scope. Many messages are out of scope; do not force a match.\n\nAnswer with JSON: {\"intent\": \"<intent name>\"}.",
+  "environment": {
+    "timestamp": "2026-10-08T07:07:10+00:00",
+    "python": "3.12.14",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "cpu": "Apple M5",
+    "libraries": {
+      "datasets": "5.1.0",
+      "pandas": "3.0.6",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "torch": "2.14.1",
+      "transformers": "5.19.0"
+    }
+  }
+}

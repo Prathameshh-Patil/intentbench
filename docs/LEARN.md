@@ -106,3 +106,37 @@ The typo is split into known subword pieces (`##` = "continues the previous piec
 - A larger model (BERT-base, RoBERTa) would likely gain a little accuracy at twice the size and latency.
 - Freezing the pre-trained layers and training only the head is faster but usually clearly worse.
 - Early stopping at epoch 4 (lowest validation loss) would give better-calibrated probabilities but a slightly lower F1. We kept selection by F1 to match the headline metric.
+
+## Phase 4: LLM classification
+
+**What we built.**
+- `src/intentbench/llm.py`: a zero-shot and a few-shot classifier on top of one provider function. Gemini (`gemini-3.5-flash-lite`) produced every reported number; Groq (`openai/gpt-oss-120b`) is wired in behind `LLM_PROVIDER` as a swap-in.
+- `scripts/run_llm.py`: runs a variant on the fixed 500-row validation sample (`--limit 20` for a dry run with a cost estimate). It writes `reports/llm_gemini_<variant>_validation.json` with metrics, tokens, cost, latency, the exact prompt, and the other two approaches scored on the same rows.
+
+**Validation results (same 500 rows).**
+
+| | Macro-F1 | In-scope acc. | OOS recall | Cost / 1,000 req. |
+|---|---|---|---|---|
+| LLM zero-shot | 0.916 | 0.927 | 0.86 | $0.24 |
+| LLM few-shot | 0.934 | 0.939 | 0.86 | $0.67 |
+| TF-IDF + LR | 0.899 | 0.907 | 0.71 | $0 |
+| DistilBERT | 0.952 | 0.963 | 0.86 | $0 |
+
+Few-shot won on validation, so it is the variant that runs on test in Phase 5. Neither variant gave a single invalid answer after the retry.
+
+**Prompt design.**
+- The system prompt lists all 150 intent names, sorted, one per line, and says what kind of assistant this is, so the model has context for names like `pto_request` or `w2`.
+- `oos` is shown as `out_of_scope`, with an explicit instruction not to force a match. Without it, LLMs tend to pick the nearest intent for everything.
+- *Few-shot* adds 3 real training examples for each intent in the baseline's 15 most-confused pairs, plus 10 out-of-scope examples. The confusions are measured on validation rows *outside* the scored sample, so we don't pick examples that happen to help on the rows we grade.
+- The intent list sits in the system prompt and the query in the user message, so the long, fixed part is identical across requests.
+
+**Why constrained output matters.** A free-text answer like "This looks like a balance inquiry" can't be scored. With 151 labels you also get near-misses: `balance_inquiry`, `Balance`, `account_balance`. We ask for JSON `{"intent": ...}` through a response schema, then accept only an exact intent name. Anything else gets one retry that says what was wrong, and only then counts as invalid (scored as out-of-scope, so a bad answer can never look correct). On Groq, the schema can even list the 151 allowed values, so the model *can't* produce anything else (constrained decoding). Gemini rejects an enum that large, hence the strict parsing.
+
+**Why caching makes results reproducible.** Even at temperature 0, a hosted model can change answers between days (provider updates, non-deterministic GPU math). We save every answer to `.llm_cache/`, keyed by a hash of model, prompt and query. A re-run reads the same answers back, so the same report comes out, at no cost. If the prompt changes, the key changes, so a stale answer is never reused by mistake. The cache also made the free tier workable: when the daily quota ran out mid-run, the next day's run picked up exactly where it stopped.
+
+**Cost and latency.** Few-shot triples the input (about 2,130 tokens versus 700), so it costs about 2.8x more per request ($0.67 versus $0.24 per 1,000, at paid-tier prices). The median round trip is about 1.3-1.5 s, but p95 is 6-8 s, dominated by the network and the provider's queue rather than the model.
+
+**Alternatives.**
+- Fine-tuning the LLM, or retrieving the most similar training examples per query (dynamic few-shot), would likely beat a fixed set of examples, at more cost and complexity.
+- A bigger model would probably do better on the subtle pairs, at roughly 10x the price.
+- Asking for a confidence score in the output: LLM self-reported confidences are poorly calibrated, so we didn't treat them as probabilities.
