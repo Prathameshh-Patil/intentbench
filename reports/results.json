@@ -1,0 +1,135 @@
+{
+  "test_size": 5500,
+  "llm_sample_size": 400,
+  "results": {
+    "tfidf_logreg": {
+      "name": "TF-IDF + logistic regression",
+      "test": {
+        "accuracy": 0.8429090909090909,
+        "in_scope_accuracy": 0.9166666666666666,
+        "macro_f1": 0.876669433841484,
+        "oos_precision": 0.9125,
+        "oos_recall": 0.511,
+        "oos_f1": 0.6551282051282051,
+        "n": 5500
+      },
+      "llm_sample": {
+        "accuracy": 0.8375,
+        "in_scope_accuracy": 0.9099378881987578,
+        "macro_f1": 0.7761564916564915,
+        "oos_precision": 0.9767441860465116,
+        "oos_recall": 0.5384615384615384,
+        "oos_f1": 0.6942148760330579,
+        "n": 400
+      },
+      "latency": {
+        "median_ms": 0.34,
+        "p95_ms": 0.38,
+        "n": 300
+      },
+      "latency_device": "cpu",
+      "model_size_mb": 42.8,
+      "cost_per_1000_usd": 0.0
+    },
+    "distilbert": {
+      "name": "DistilBERT (fine-tuned)",
+      "test": {
+        "accuracy": 0.8921818181818182,
+        "in_scope_accuracy": 0.9582222222222222,
+        "macro_f1": 0.9203405635823322,
+        "oos_precision": 0.9754098360655737,
+        "oos_recall": 0.595,
+        "oos_f1": 0.7391304347826086,
+        "n": 5500
+      },
+      "llm_sample": {
+        "accuracy": 0.8725,
+        "in_scope_accuracy": 0.9565217391304348,
+        "macro_f1": 0.820537777037777,
+        "oos_precision": 0.9761904761904762,
+        "oos_recall": 0.5256410256410257,
+        "oos_f1": 0.6833333333333333,
+        "n": 400
+      },
+      "latency": {
+        "median_ms": 12.06,
+        "p95_ms": 24.15,
+        "n": 300
+      },
+      "latency_device": "cpu",
+      "model_size_mb": 269.0,
+      "cost_per_1000_usd": 0.0
+    },
+    "distilbert_threshold": {
+      "name": "DistilBERT + threshold 0.69 (served)",
+      "test": {
+        "accuracy": 0.918,
+        "in_scope_accuracy": 0.9493333333333334,
+        "macro_f1": 0.9385711186061267,
+        "oos_precision": 0.8710762331838565,
+        "oos_recall": 0.777,
+        "oos_f1": 0.821353065539112,
+        "n": 5500
+      },
+      "llm_sample": {
+        "accuracy": 0.91,
+        "in_scope_accuracy": 0.9440993788819876,
+        "macro_f1": 0.8343092833092833,
+        "oos_precision": 0.8450704225352113,
+        "oos_recall": 0.7692307692307693,
+        "oos_f1": 0.8053691275167785,
+        "n": 400
+      },
+      "latency": {
+        "median_ms": 12.06,
+        "p95_ms": 24.15,
+        "n": 300
+      },
+      "latency_device": "cpu",
+      "model_size_mb": 269.0,
+      "cost_per_1000_usd": 0.0,
+      "threshold": 0.69
+    },
+    "llm": {
+      "name": "LLM few-shot (gemini-3.5-flash-lite)",
+      "variant": "few",
+      "validation_macro_f1_by_variant": {
+        "zero": 0.915890442890443,
+        "few": 0.9344849594849594
+      },
+      "llm_sample": {
+        "accuracy": 0.8975,
+        "in_scope_accuracy": 0.9130434782608695,
+        "macro_f1": 0.7947861212861211,
+        "oos_precision": 0.9027777777777778,
+        "oos_recall": 0.8333333333333334,
+        "oos_f1": 0.8666666666666667,
+        "n": 400
+      },
+      "latency": {
+        "median_ms": 1570.54,
+        "p95_ms": 8723.31,
+        "n": 400
+      },
+      "latency_device": "network round trip to the provider",
+      "model_size_mb": null,
+      "cost_per_1000_usd": 0.6666,
+      "price_source": "https://ai.google.dev/gemini-api/docs/pricing (gemini-3.5-flash-lite, Standard paid tier; page last updated 2026-10-07, checked 2026-10-08)",
+      "invalid_after_retry": 0
+    }
+  },
+  "environment": {
+    "timestamp": "2026-10-12T08:25:02+00:00",
+    "python": "3.12.14",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "cpu": "Apple M5",
+    "libraries": {
+      "datasets": "5.1.0",
+      "pandas": "3.0.6",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "torch": "2.14.1",
+      "transformers": "5.19.0"
+    }
+  }
+}
