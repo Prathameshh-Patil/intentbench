@@ -50,3 +50,6 @@ data_cache/
 # --- Gradio ---
 .gradio/
 flagged/
+
+# --- Static web demo build (published to gh-pages) ---
+web/dist/
