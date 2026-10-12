@@ -78,7 +78,7 @@ pip install -e ".[dev]"
 cp .env.example .env              # add GEMINI_API_KEY only if you want the LLM parts
 ```
 
-Get the models. Either train them (about 1.5 minutes for the baseline, about 12 minutes for DistilBERT on an Apple-silicon GPU, or use `notebooks/02_finetune_on_gpu.ipynb` on a free Colab GPU):
+Get the models. Either train them (1.5-3 minutes for the baseline on CPU, about 12 minutes for DistilBERT on an Apple-silicon GPU, or use `notebooks/02_finetune_on_gpu.ipynb` on a free Colab GPU):
 
 ```bash
 python scripts/run_baseline.py    # -> models/baseline.joblib
