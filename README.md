@@ -4,7 +4,7 @@
 
 For engineers choosing a text classifier for a chatbot, a support inbox or a voice assistant, and for anyone who wants to see a careful, reproducible model comparison end to end.
 
-- **Live demo:** _not deployed yet, see [Limits and next steps](#limits-and-next-steps)_
+- **Live demo:** [prathameshh-patil.github.io/intentbench](https://prathameshh-patil.github.io/intentbench/) (the fine-tuned DistilBERT, running in your browser)
 - **Results:** [reports/comparison.md](reports/comparison.md) · **Error analysis:** [reports/analysis.md](reports/analysis.md) · **Model card:** [docs/MODEL_CARD.md](docs/MODEL_CARD.md)
 
 ![Demo: one message, three answers](docs/demo.png)
@@ -94,6 +94,15 @@ python demo/app.py                               # demo at http://localhost:7860
 uvicorn intentbench.serve.app:app --port 8000    # API at http://localhost:8000/docs
 ```
 
+### The browser demo
+
+```bash
+pip install -e ".[web]"
+python scripts/export_web.py      # int8 ONNX + page -> web/dist/, checks it matches PyTorch
+python -m http.server -d web/dist 8765
+./scripts/publish_web.sh          # push web/dist to the gh-pages branch
+```
+
 ### The API in Docker
 
 ```bash
@@ -144,8 +153,8 @@ LLM answers are cached in `.llm_cache/`, so with the cache present a re-run make
 - **Only one LLM** (Gemini 3.5 Flash-Lite) and one prompt family were tried. A larger model or retrieval-based few-shot examples would probably do better, at a higher price.
 - **Validation has 3% out-of-scope, test has 18%.** The threshold was tuned where out-of-scope is rare, so on real traffic the best threshold depends on how often users go off-topic.
 - **Probabilities are over-confident** (see the Phase 3 loss curves). Calibration such as temperature scaling would make the threshold easier to reason about.
-- **Not deployed yet:** Hugging Face now requires a paid plan for Gradio and Docker Spaces. The demo and API run locally with one command each; hosting is the next step.
-- **Next:** calibrate, then re-pick the threshold; export to ONNX for a smaller, faster CPU image; try retrieval-based few-shot for the LLM; evaluate on a second intent dataset (for example BANKING77) to check that the conclusions generalise.
+- **The live demo shows DistilBERT only.** It runs an int8 ONNX copy in the browser with transformers.js on free GitHub Pages; that copy agrees with the full model on 99.7% of validation queries. The three-way Gradio demo and the API still run locally, since free hosting can't keep a Python server with an LLM key up.
+- **Next:** calibrate, then re-pick the threshold; use the ONNX export for a smaller, faster CPU image; try retrieval-based few-shot for the LLM; evaluate on a second intent dataset (for example BANKING77) to check that the conclusions generalise.
 
 ## License
 

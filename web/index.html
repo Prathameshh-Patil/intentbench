@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IntentBench Demo</title>
+<meta name="description" content="Fine-tuned DistilBERT intent classifier (CLINC150, 150 intents + out-of-scope), running in your browser.">
+<style>
+  :root {
+    --bg: #f7f7f5; --card: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e3e3de;
+    --accent: #2f5bd3; --accent-soft: #e6ecfb; --warn: #b4540a; --warn-soft: #fbeedf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151514; --card: #1f1f1d; --text: #ececea; --muted: #a3a39d; --line: #34342f;
+      --accent: #8aa8ff; --accent-soft: #24304d; --warn: #f0a35e; --warn-soft: #3b2a19;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151514; --card: #1f1f1d; --text: #ececea; --muted: #a3a39d; --line: #34342f;
+    --accent: #8aa8ff; --accent-soft: #24304d; --warn: #f0a35e; --warn-soft: #3b2a19;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 1.75rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  textarea {
+    width: 100%; min-height: 84px; resize: vertical; padding: 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit;
+  }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  button {
+    font: inherit; border-radius: 8px; padding: 8px 16px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--accent); color: var(--card);
+  }
+  button:disabled { opacity: .5; cursor: progress; }
+  .chip { background: transparent; color: var(--accent); border-color: var(--line); padding: 4px 10px; font-size: .875rem; }
+  #status { color: var(--muted); font-size: .875rem; margin-top: 12px; min-height: 1.5em; }
+  #result { margin-top: 20px; display: none; }
+  .label { font-size: 1.375rem; font-weight: 600; padding: 4px 10px; border-radius: 8px; background: var(--accent-soft); display: inline-block; }
+  .label.oos { background: var(--warn-soft); color: var(--warn); }
+  .bar { display: grid; grid-template-columns: minmax(0, 180px) 1fr 52px; gap: 10px; align-items: center; margin-top: 8px; font-size: .9rem; }
+  .bar .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .track { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .fill { height: 100%; background: var(--accent); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .note { color: var(--muted); font-size: .875rem; margin-top: 16px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 24px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--muted); font-size: .8rem; }
+  a { color: var(--accent); }
+  footer { margin-top: 32px; color: var(--muted); font-size: .875rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>IntentBench</h1>
+  <p class="sub">A fine-tuned DistilBERT that sorts a message into one of 150 intents, or says it is out of scope. It runs in your browser, so nothing you type leaves this page.</p>
+
+  <div class="card">
+    <textarea id="text" placeholder="Type a message, e.g. 'i lost my credit card'">how much money is in my checking account</textarea>
+    <div class="row" id="examples"></div>
+    <div class="row"><button id="go" disabled>Classify</button></div>
+    <div id="status">Loading the model (about 70 MB, cached after the first visit) ...</div>
+
+    <div id="result">
+      <div><span id="label" class="label"></span></div>
+      <div id="bars"></div>
+      <p class="note" id="explain"></p>
+    </div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <footer>
+    Trained on CLINC150. Scores are from the held-out test set (5,500 queries) with the full-precision model; this page runs an int8 copy.
+    Code, the TF-IDF baseline and the LLM comparison: <a href="https://github.com/Prathameshh-Patil/intentbench">github.com/Prathameshh-Patil/intentbench</a>.
+  </footer>
+</main>
+
+<script type="module">
+  import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1";
+
+  env.allowRemoteModels = false;
+  env.allowLocalModels = true;
+  env.localModelPath = new URL("./models/", location.href).href;
+
+  const $ = (id) => document.getElementById(id);
+  const EXAMPLES = [
+    "i lost my credit card",
+    "set an alarm for 6 tomorrow",
+    "what should I cook for a date night",
+    "how do I change my car's oil",
+    "who won the world cup in 1998",
+  ];
+  const pretty = (s) => s.replaceAll("_", " ");
+  const pct = (x) => (100 * x).toFixed(1) + "%";
+
+  const meta = await fetch("meta.json").then((r) => r.json());
+  const t = meta.test;
+  $("stats").innerHTML = [
+    [pct(t.accuracy), "test accuracy"],
+    [pct(t.in_scope_accuracy), "in-scope accuracy"],
+    [pct(t.oos_recall), "out-of-scope recall"],
+    [meta.threshold.toFixed(2), "out-of-scope threshold"],
+  ].map(([v, k]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join("");
+
+  for (const ex of EXAMPLES) {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = ex;
+    b.onclick = () => { $("text").value = ex; classify(); };
+    $("examples").append(b);
+  }
+
+  let classifier;
+  try {
+    classifier = await pipeline("text-classification", "intentbench", { dtype: "q8", device: "wasm" });
+    $("status").textContent = "Ready.";
+    $("go").disabled = false;
+  } catch (err) {
+    $("status").textContent = "The model failed to load: " + err.message;
+    throw err;
+  }
+
+  async function classify() {
+    const text = $("text").value.trim();
+    if (!text || !classifier) return;
+    $("go").disabled = true;
+    const start = performance.now();
+    const top = await classifier(text, { top_k: 3 });
+    const ms = performance.now() - start;
+    $("go").disabled = false;
+
+    const best = top[0];
+    const oos = best.label === "oos" || best.score < meta.threshold;
+    $("label").textContent = oos ? "out of scope" : pretty(best.label);
+    $("label").className = "label" + (oos ? " oos" : "");
+    $("bars").innerHTML = top.map((p) => `
+      <div class="bar">
+        <span class="name" title="${p.label}">${pretty(p.label === "oos" ? "out_of_scope" : p.label)}</span>
+        <span class="track"><span class="fill" style="width:${(100 * p.score).toFixed(1)}%;display:block"></span></span>
+        <span class="num">${pct(p.score)}</span>
+      </div>`).join("");
+    $("explain").textContent = oos && best.label !== "oos"
+      ? `Top guess "${pretty(best.label)}" scored ${pct(best.score)}, below the ${meta.threshold} threshold, so the answer is out of scope.`
+      : `Answered in ${ms.toFixed(0)} ms on your device.`;
+    $("result").style.display = "block";
+    $("status").textContent = "";
+  }
+
+  $("go").onclick = classify;
+  $("text").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) classify();
+  });
+  classify();
+</script>
+</body>
+</html>
