@@ -1,0 +1,8 @@
+# Keep the build context small: everything except what the Dockerfile copies.
+*
+!src/intentbench/__init__.py
+!src/intentbench/serve/
+!reports/threshold.json
+!models/distilbert/
+models/distilbert/training_args.bin
+**/__pycache__
