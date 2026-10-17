@@ -78,6 +78,17 @@ pip install -e ".[dev]"
 cp .env.example .env              # add GEMINI_API_KEY only if you want the LLM parts
 ```
 
+Environment variables (all optional; every one is commented in [`.env.example`](.env.example)):
+
+| Variable | Used by | What it does |
+|---|---|---|
+| `GEMINI_API_KEY` | LLM runs, demo | Key for the Gemini classifier; not needed for TF-IDF, DistilBERT or the API |
+| `LLM_PROVIDER` / `GROQ_API_KEY` | LLM runs | Switch to Groq instead of Gemini (default `gemini`) |
+| `GEMINI_RPM` / `GROQ_RPM` | LLM runs | Client-side pacing to stay under the free-tier rate limit |
+| `LLM_DAILY_CAP` | demo | Most fresh LLM calls per day, so visitors can't run up a bill |
+| `INTENTBENCH_HF_REPO` | demo | Hugging Face repo to download models from when `models/` is empty |
+| `INTENTBENCH_MODEL` / `OOS_THRESHOLD` | API | Model folder or Hub id, and an override for the out-of-scope threshold |
+
 Get the models. Either train them (1.5-3 minutes for the baseline on CPU, about 12 minutes for DistilBERT on an Apple-silicon GPU, or use `notebooks/02_finetune_on_gpu.ipynb` on a free Colab GPU):
 
 ```bash
